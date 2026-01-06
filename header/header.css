@@ -1,0 +1,15 @@
+.site-header {
+  background: #222;
+  color: white;
+  padding: 16px;
+}
+
+.site-header nav a {
+  color: white;
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+}
