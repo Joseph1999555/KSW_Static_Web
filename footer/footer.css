@@ -1,6 +1,11 @@
 .site-footer {
-  background: #eee;
+  background: #000033;
   padding: 16px;
   text-align: center;
   margin-top: 40px;
+}
+
+.site-footer p {
+  color: #fff;
+  margin: 0;
 }

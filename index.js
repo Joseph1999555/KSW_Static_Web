@@ -16,6 +16,10 @@ const routes = {
   "/contact": "pages/contact.html"
 };
 
+function getPath() {
+  return location.hash.replace("#", "") || "/";
+}
+
 function loadPage(path) {
   const page = routes[path] || routes["/"];
 
@@ -40,7 +44,7 @@ document.addEventListener("click", e => {
 });
 
 window.addEventListener("popstate", () => {
-  loadPage(location.pathname);
+  loadPage(getPath());
 });
 
-loadPage(location.pathname);
+loadPage(getPath());
