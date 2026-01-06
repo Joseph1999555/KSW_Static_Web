@@ -3,9 +3,43 @@
   padding: 16px;
   text-align: center;
   margin-top: 40px;
+  position: relative;
 }
 
 .site-footer p {
   color: #fff;
   margin: 0;
+}
+
+.footer-links {
+  position: absolute;
+  top: 15px;
+  right: 50px;
+}
+
+.fa {
+  padding: 15px;
+  font-size: 30px;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  background: #3B5998;
+  color: white;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column h2 {
+  color: white;
 }
