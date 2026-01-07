@@ -52,6 +52,85 @@ body {
   font-family: "Sukhumvit Set", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Main Section */
+
+.main {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.main > h1 {
+  font-size: 32px;
+  margin: 0 auto 12px;
+  width: 50%;
+  text-align: center;
+}
+
+
+.main > h2 {
+  font-size: 18px;
+  font-weight: normal;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* กล่องรวม 4 อัน */
+.main-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* กล่องแต่ละอัน */
+.main-item {
+  background: #f7f7f7;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* โลโก้ */
+.main-item .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.main-item .logo img {
+  width: 64px;
+  height: auto;
+}
+
+/* หัวข้อในการ์ด */
+.main-item h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* เนื้อหา */
+.main-item h3 {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+
+
+@media (max-width: 1024px) {
+  .main-box {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1000px) {
+  .main-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 /* About Section */
 .about {
   padding: 60px 20px;
@@ -60,7 +139,7 @@ body {
 }
 
 .about-box {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -76,8 +155,9 @@ body {
 }
 
 .about-content {
+
   padding: 0;
-  width: auto;
+  width: 100%;
 }
 
 .about-content h2,
@@ -88,9 +168,10 @@ body {
 .about-content p {
   line-height: 1.6;
   color: #333;
+  font-size: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .about-box {
     grid-template-columns: 1fr;
   }
@@ -125,17 +206,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 50%;
+  width: 100%;
+  /* background-color: red; */
+  margin-left: 30px;
 }
 
 .info-item {
-  background: #f5f5f5;
+  background: #F0F8FF;
   padding: 16px;
   border-radius: 8px;
-  width: 100%;
+  width: 80%;
+  margin-left: 8px;
+  align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .contact-box {
     grid-template-columns: 1fr;
   }
