@@ -31,7 +31,37 @@
 
 .column {
   float: left;
-  width: 25%;
+  width: 33.3333%;
+  /* three-column layout */
+}
+
+/* Responsive: 2 columns on tablets, 1 column on phones */
+@media (max-width: 768px) {
+  .column {
+    width: 50%;
+  }
+
+  .footer-links {
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .column {
+    width: 100%;
+    float: none;
+  }
+
+  .footer-links {
+    position: static;
+    margin-bottom: 12px;
+  }
+
+  .site-footer {
+    text-align: left;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .row:after {
@@ -42,4 +72,9 @@
 
 .column h2 {
   color: white;
+}
+
+.column h4 {
+  color: white;
+  margin-bottom: 3px;
 }
