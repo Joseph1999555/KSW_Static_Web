@@ -1,9 +1,12 @@
-// include header / footer
-document.querySelectorAll("[data-include]").forEach(el => {
-  fetch(el.dataset.include)
-    .then(r => r.text())
-    .then(html => el.innerHTML = html);
-});
+// include partials
+function loadIncludes() {
+  document.querySelectorAll("[data-include]").forEach(el => {
+    fetch(el.dataset.include)
+      .then(r => r.text())
+      .then(html => el.innerHTML = html);
+  });
+}
+
 
 // routes
 const routes = {
@@ -28,8 +31,11 @@ function loadPage() {
     .then(r => r.text())
     .then(html => {
       document.getElementById("app").innerHTML = html;
+      loadIncludes();
     });
 }
+
+
 
 // ดักคลิก
 document.addEventListener("click", e => {
