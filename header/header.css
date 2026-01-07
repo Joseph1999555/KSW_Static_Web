@@ -7,7 +7,7 @@
 
 /* per-page backgrounds */
 .site-header.bg-home {
-  background: linear-gradient(90deg, #002244, #004488);
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/warehouse.jpg") center/cover no-repeat;
 }
 
 .site-header.bg-news {
