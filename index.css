@@ -60,15 +60,22 @@ body {
 }
 
 .main>h1 {
+<<<<<<< HEAD
   max-width: 900px;
   /* คุมความกว้าง */
   margin: 0 auto 48px;
+=======
+  font-size: 32px;
+  margin: 0 auto 12px;
+  width: 50%;
+>>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   text-align: center;
-  font-size: 24px;
-  line-height: 1.6;
-  font-weight: normal;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
 .main>h2 {
   font-size: 18px;
   font-weight: normal;
@@ -77,17 +84,19 @@ body {
   line-height: 1.6;
 }
 
+/* กล่องรวม 4 อัน */
 .main-box {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 40px;
 }
 
+/* กล่องแต่ละอัน */
 .main-item {
-  background: #F0F8FF;
-  padding: 28px 20px;
+  background: #f7f7f7;
+  padding: 24px;
   border-radius: 12px;
+  text-align: center;
 }
 
 /* โลโก้ */
@@ -134,7 +143,7 @@ body {
 /* About Section */
 .about {
   padding: 60px 20px;
-  background: #ffffff;
+  background: #f5f6fa;
   height: 100%;
 }
 
@@ -215,14 +224,14 @@ body {
 /* Contact Section */
 
 .contact {
-  padding: 80px 20px;
+  padding: 60px 20px;
   background: #ffffff;
   height: 100%;
 }
 
 .contact-box {
-  max-width: 1600px;
-  gap: 40px;
+  max-width: 2000px;
+  gap: 24px;
   margin: auto;
   margin-top: 20px;
   display: grid;
@@ -287,21 +296,40 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0;
+  padding: 60px 0;    
+  width: 90%;         
+  max-width: 1200px;  
+  overflow: hidden;  
+  position: relative;
+  margin: 0 auto;
 }
 
 .card-container {
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
   width: 50;
+=======
+  flex-wrap: nowrap;     
+  gap: 30px;
+  width: max-content;  
+>>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   margin-top: 40px;
+  animation: scroll-left 30s linear infinite;
 }
 
+.card-container:hover {
+  animation-play-state: paused;
+}
 .card {
   width: 18rem;
+<<<<<<< HEAD
+=======
+  flex-shrink: 0;    
+>>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   display: flex;
   flex-direction: column;
   border: 1px solid #ddd;
@@ -331,15 +359,20 @@ body {
 }
 
 .card-text {
-  font-size: 5px;
-  line-height: 1.2;
+  font-size: 14px;     
+  line-height: 1.4;
   color: #666;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .product-box h2 {
+<<<<<<< HEAD
   font-size: 24px;
   color: #888;
+=======
+  font-size: 40px;    
+  color: #333;          
+>>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   text-align: center;
 }
 
@@ -348,6 +381,7 @@ body {
   font-weight: bold;
   text-align: center;
 }
+<<<<<<< HEAD
 
 @media (max-width: 576px) {
   .Product-card {
@@ -356,5 +390,51 @@ body {
 
   .product-box p {
     font-size: 18px;
+=======
+
+.btn-primary {
+    background: linear-gradient(135deg, #25a9dd 0%, #1e8cb8 100%); /* ไล่เฉดสีฟ้า */
+    color: white !important;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(37, 169, 221, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1e8cb8 0%, #25a9dd 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 169, 221, 0.5);
+    color: white !important;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
+
+@media (max-width: 576px) {
+  .product-box {
+    width: 95%;
+    padding: 40px 0;
+  }
+  .product-box h2 {
+    font-size: 28px;
+>>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   }
 }
