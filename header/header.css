@@ -2,6 +2,36 @@
   padding: 24px;
   background: #000033;
   color: #fff;
+  transition: background 300ms ease;
+}
+
+/* per-page backgrounds */
+.site-header.bg-home {
+  background: linear-gradient(90deg, #002244, #004488);
+}
+
+.site-header.bg-news {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+}
+
+.site-header.bg-product {
+  background: linear-gradient(90deg, #0b6623, #0f9d58);
+}
+
+.site-header.bg-order {
+  background: linear-gradient(90deg, #78350f, #f97316);
+}
+
+.site-header.bg-review {
+  background: linear-gradient(90deg, #3b185f, #7c3aed);
+}
+
+.site-header.bg-about {
+  background: linear-gradient(90deg, #2b6cb0, #4299e1);
+}
+
+.site-header.bg-contact {
+  background: linear-gradient(90deg, #6b7280, #111827);
 }
 
 /* แถวบน: h1 + nav */
@@ -12,7 +42,7 @@
 
 .logo {
   margin: 0;
-  color:#00CCFF;
+  color: #00CCFF;
   font-size: 40px;
 }
 
