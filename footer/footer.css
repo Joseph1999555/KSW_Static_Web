@@ -43,3 +43,8 @@
 .column h2 {
   color: white;
 }
+
+.column h4 {
+  color: white;
+  margin-bottom: 3px;
+}
