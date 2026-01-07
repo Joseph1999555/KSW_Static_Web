@@ -20,7 +20,8 @@ function getPath() {
   return location.hash.replace("#", "") || "/";
 }
 
-function loadPage(path) {
+function loadPage() {
+  const path = getPath();
   const page = routes[path] || routes["/"];
 
   fetch(page)
@@ -30,21 +31,17 @@ function loadPage(path) {
     });
 }
 
-function navigate(path) {
-  history.pushState({}, "", path);
-  loadPage(path);
-}
-
+// ดักคลิก
 document.addEventListener("click", e => {
   const link = e.target.closest("a[data-link]");
   if (!link) return;
 
   e.preventDefault();
-  navigate(link.getAttribute("href"));
+  location.hash = link.getAttribute("href");
 });
 
-window.addEventListener("popstate", () => {
-  loadPage(getPath());
-});
+// เปลี่ยน hash
+window.addEventListener("hashchange", loadPage);
 
-loadPage(getPath());
+// โหลดครั้งแรก
+loadPage();
