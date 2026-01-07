@@ -60,22 +60,12 @@ body {
 }
 
 .main>h1 {
-<<<<<<< HEAD
-  max-width: 900px;
-  /* คุมความกว้าง */
-  margin: 0 auto 48px;
-=======
   font-size: 32px;
   margin: 0 auto 12px;
   width: 50%;
->>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   text-align: center;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
 .main>h2 {
   font-size: 18px;
   font-weight: normal;
@@ -307,16 +297,9 @@ body {
 .card-container {
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  width: 50;
-=======
   flex-wrap: nowrap;     
   gap: 30px;
   width: max-content;  
->>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   margin-top: 40px;
   animation: scroll-left 30s linear infinite;
 }
@@ -326,10 +309,7 @@ body {
 }
 .card {
   width: 18rem;
-<<<<<<< HEAD
-=======
   flex-shrink: 0;    
->>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   display: flex;
   flex-direction: column;
   border: 1px solid #ddd;
@@ -366,13 +346,8 @@ body {
 }
 
 .product-box h2 {
-<<<<<<< HEAD
-  font-size: 24px;
-  color: #888;
-=======
   font-size: 40px;    
   color: #333;          
->>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   text-align: center;
 }
 
@@ -381,16 +356,6 @@ body {
   font-weight: bold;
   text-align: center;
 }
-<<<<<<< HEAD
-
-@media (max-width: 576px) {
-  .Product-card {
-    width: 90% !important;
-  }
-
-  .product-box p {
-    font-size: 18px;
-=======
 
 .btn-primary {
     background: linear-gradient(135deg, #25a9dd 0%, #1e8cb8 100%); /* ไล่เฉดสีฟ้า */
@@ -435,6 +400,5 @@ body {
   }
   .product-box h2 {
     font-size: 28px;
->>>>>>> 5482ca7f71ec93bd2fd801d162cd04fcd2767959
   }
 }
