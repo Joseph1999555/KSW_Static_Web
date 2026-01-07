@@ -11,19 +11,19 @@
 }
 
 .site-header.bg-news {
-  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
 .site-header.bg-product {
-  background: linear-gradient(90deg, #0b6623, #0f9d58);
+  background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
 .site-header.bg-order {
-  background: linear-gradient(90deg, #78350f, #f97316);
+  background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
 .site-header.bg-review {
-  background: linear-gradient(90deg, #3b185f, #7c3aed);
+  background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
 .site-header.bg-about {
@@ -31,7 +31,7 @@
 }
 
 .site-header.bg-contact {
-  background: linear-gradient(90deg, #6b7280, #111827);
+  background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
 /* แถวบน: h1 + nav */
