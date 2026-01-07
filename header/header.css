@@ -1,36 +1,43 @@
 .site-header {
-  padding: 24px;
+  margin-top: 0px;
+  padding: 0px;
+  color: #000033;
+}
+
+.site-banner {
+  text-align: center;
+  margin-top: 0px;
+  padding: 3%;
   background: #000033;
-  color: #fff;
   transition: background 300ms ease;
 }
 
 /* per-page backgrounds */
-.site-header.bg-home {
+.site-banner.bg-home {
   background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/warehouse.jpg") center/cover no-repeat;
 }
 
-.site-header.bg-news {
+.site-banner.bg-news {
   background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
-.site-header.bg-product {
+.site-banner.bg-product {
   background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
-.site-header.bg-order {
+.site-banner.bg-order {
   background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
-.site-header.bg-review {
+.site-banner.bg-review {
   background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
-.site-header.bg-about {
+.site-banner.bg-about {
   background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
-.site-header.bg-contact {
+.site-banner.bg-contact {
   background: linear-gradient(90deg, #2b6cb0, #4299e1);
 }
 
@@ -54,7 +61,7 @@
 }
 
 .main-nav a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-size: 15px;
 }
@@ -68,4 +75,5 @@
   margin-top: 32px;
   font-size: 40px;
   text-align: center;
+  color: #e1ff00;
 }

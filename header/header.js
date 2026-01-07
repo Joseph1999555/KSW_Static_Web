@@ -6,19 +6,19 @@ fetch("header/header.html")
     });
 
 function initHeader() {
-    const headerEl = document.querySelector('.site-header');
+    const bannerEl = document.querySelector('.site-banner');
     const titleEl = document.getElementById('page-title');
 
     function setHeaderBg(bg) {
         // reset bg classes that start with 'bg-'
-        headerEl.className = headerEl.className.split(' ').filter(c => !c.startsWith('bg-')).join(' ');
+        bannerEl.className = bannerEl.className.split(' ').filter(c => !c.startsWith('bg-')).join(' ');
         if (!bg) return;
         // If bg looks like a hex color, set inline style; otherwise use class 'bg-<name>'
         if (bg.startsWith('#') || bg.startsWith('rgb')) {
-            headerEl.style.background = bg;
+            bannerEl.style.background = bg;
         } else {
-            headerEl.classList.add('bg-' + bg);
-            headerEl.style.background = '';
+            bannerEl.classList.add('bg-' + bg);
+            bannerEl.style.background = '';
         }
     }
 
