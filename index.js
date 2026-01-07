@@ -31,6 +31,8 @@ function loadPage() {
     });
 }
 
+
+
 // ดักคลิก
 document.addEventListener("click", e => {
   const link = e.target.closest("a[data-link]");
