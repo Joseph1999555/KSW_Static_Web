@@ -31,7 +31,8 @@
 
 .column {
   float: left;
-  width: 25%;
+  width: 33.3333%;
+  /* three-column layout */
 }
 
 /* Responsive: 2 columns on tablets, 1 column on phones */
