@@ -104,13 +104,13 @@ body {
 
 /* หัวข้อในการ์ด */
 .main-item h2 {
-  font-size: 18px;
+  font-size: 24px;
   margin-bottom: 8px;
 }
 
 /* เนื้อหา */
 .main-item h3 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: normal;
   line-height: 1.6;
 }
@@ -218,6 +218,27 @@ body {
   margin-left: 8px;
   align-items: center;
 }
+
+.info-item h3 {
+  display: flex;        /* ← ตัวนี้แหละที่หาย */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 3px;
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.info-item p {
+  margin: 4px 0;
+  font-size: 20px;
+}
+
+  .info-item .icon {
+  margin-bottom: 3px;
+  width: 24px;
+  height: 24px;
+}
+
 
 @media (max-width: 1000px) {
   .contact-box {

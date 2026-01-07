@@ -34,11 +34,11 @@
 }
 
 .site-banner.bg-about {
-  background: linear-gradient(90deg, #2b6cb0, #4299e1);
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/about_background_01.png") center/cover no-repeat;
 }
 
 .site-banner.bg-contact {
-  background: linear-gradient(90deg, #2b6cb0, #4299e1);
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/contact_background_01.png") center/cover no-repeat;
 }
 
 /* แถวบน: h1 + nav */
