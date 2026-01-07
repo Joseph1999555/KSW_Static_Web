@@ -63,16 +63,9 @@ body {
   font-size: 32px;
   margin: 0 auto 12px;
   width: 50%;
+  text-align: center;
 }
 
-.main > h1 {
-  max-width: 900px;   /* คุมความกว้าง */
-  margin: 0 auto 48px;
-  text-align: center;
-  font-size: 24px;
-  line-height: 1.6;
-  font-weight: normal;
-}
 
 .main>h2 {
   font-size: 18px;
@@ -82,17 +75,19 @@ body {
   line-height: 1.6;
 }
 
+/* กล่องรวม 4 อัน */
 .main-box {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 40px;
 }
 
+/* กล่องแต่ละอัน */
 .main-item {
-  background: #F0F8FF;
-  padding: 28px 20px;
+  background: #f7f7f7;
+  padding: 24px;
   border-radius: 12px;
+  text-align: center;
 }
 
 /* โลโก้ */
@@ -139,7 +134,7 @@ body {
 /* About Section */
 .about {
   padding: 60px 20px;
-  background: #ffffff;
+  background: #f5f6fa;
   height: 100%;
 }
 
@@ -185,14 +180,14 @@ body {
 /* Contact Section */
 
 .contact {
-  padding: 80px 20px;
+  padding: 60px 20px;
   background: #ffffff;
   height: 100%;
 }
 
 .contact-box {
-  max-width: 1600px;
-  gap: 40px;
+  max-width: 2000px;
+  gap: 24px;
   margin: auto;
   margin-top: 20px;
   display: grid;
@@ -295,6 +290,33 @@ body {
   font-size: 16px;
   font-weight: bold;
   text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #25a9dd 0%, #1e8cb8 100%);
+    color: white !important;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(37, 169, 221, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1e8cb8 0%, #25a9dd 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 169, 221, 0.5);
+    color: white !important;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
 }
 
 @media (max-width: 576px) {
