@@ -110,6 +110,7 @@ body {
 .main-item .logo img {
   width: 64px;
   height: auto;
+  color: #00AEEF;
 }
 
 /* หัวข้อในการ์ด */
@@ -204,8 +205,7 @@ body {
   top: 8px;
   width: 4px;
   height: 60%;
-  background: #2e8b57;
-  /* เขียวเกษตร */
+  background: #00AEEF;
   border-radius: 2px;
 }
 
@@ -263,7 +263,6 @@ body {
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  /* background-color: red; */
   margin-left: 30px;
 }
 
@@ -278,7 +277,6 @@ body {
 
 .info-item h3 {
   display: flex;
-  /* ← ตัวนี้แหละที่หาย */
   align-items: center;
   gap: 10px;
   margin-bottom: 3px;
@@ -303,6 +301,8 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Product Section */
 
 .product-box {
   display: flex;
@@ -425,38 +425,6 @@ body {
   }
 }
 
-/* spinner */
-/* LOADING OVERLAY */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* ซ่อนไว้ก่อน */
-.hidden {
-  display: none;
-}
-
-/* SPINNER */
-.spinner {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #ddd;
-  border-top: 5px solid #000033;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 /* SKELETON BASE */
 .skeleton {
