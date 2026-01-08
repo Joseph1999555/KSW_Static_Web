@@ -8,6 +8,43 @@ fetch("header/header.html")
 function initHeader() {
     const bannerEl = document.querySelector('.site-header');
     const titleEl = document.getElementById('page-title');
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+            navToggle.classList.toggle('open', isOpen);
+        });
+
+        // close when a nav link is clicked (mobile)
+        mainNav.addEventListener('click', e => {
+            if (e.target.closest('a')) {
+                mainNav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.classList.remove('open');
+            }
+        });
+
+        // ensure closed on wide screens
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 800) {
+                mainNav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.classList.remove('open');
+            }
+        });
+
+        // close on ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+                mainNav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.classList.remove('open');
+            }
+        });
+    }
 
     function setHeaderBg(bg) {
         // reset bg classes that start with 'bg-'
@@ -65,6 +102,15 @@ function initHeader() {
         const bg = link.dataset.bg;
         if (title) titleEl.textContent = title;
         setHeaderBg(bg);
+
+        // close mobile nav if open
+        if (mainNav && mainNav.classList.contains('open')) {
+            mainNav.classList.remove('open');
+            if (navToggle) {
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.classList.remove('open');
+            }
+        }
     });
 
     // handle browser back/forward
