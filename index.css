@@ -66,6 +66,7 @@ body {
   text-align: center;
 }
 
+
 .main>h2 {
   font-size: 18px;
   font-weight: normal;
@@ -144,16 +145,6 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   align-items: center;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .about-image img {
@@ -161,12 +152,6 @@ body {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 0.4s ease;
-}
-
-.about-image img:hover {
-  transform: scale(1.03);
 }
 
 .about-content {
@@ -175,34 +160,15 @@ body {
   width: 100%;
 }
 
+.about-content h2,
 .about-content h3 {
   margin-top: 0;
 }
-
-.about-content h2 {
-  margin-top: 0;
-  position: relative;
-  padding-left: 14px;
-}
-
-.about-content h2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 4px;
-  height: 60%;
-  background: #2e8b57;
-  /* เขียวเกษตร */
-  border-radius: 2px;
-}
-
 
 .about-content p {
   line-height: 1.6;
   color: #333;
   font-size: 20px;
-  max-width: 720px;
 }
 
 @media (max-width: 1000px) {
@@ -255,8 +221,7 @@ body {
 }
 
 .info-item h3 {
-  display: flex;
-  /* ← ตัวนี้แหละที่หาย */
+  display: flex;        /* ← ตัวนี้แหละที่หาย */
   align-items: center;
   gap: 10px;
   margin-bottom: 3px;
@@ -269,7 +234,7 @@ body {
   font-size: 20px;
 }
 
-.info-item .icon {
+  .info-item .icon {
   margin-bottom: 3px;
   width: 24px;
   height: 24px;
@@ -282,115 +247,80 @@ body {
   }
 }
 
-.product-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 0;    
-  width: 90%;         
-  max-width: 1200px;  
-  overflow: hidden;  
+.custom-product-section {
   position: relative;
-  margin: 0 auto;
-}
-
-.card-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;     
-  gap: 30px;
-  width: max-content;  
-  margin-top: 40px;
-  animation: scroll-left 30s linear infinite;
-}
-
-.card-container:hover {
-  animation-play-state: paused;
-}
-.card {
-  width: 18rem;
-  flex-shrink: 0;    
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-img-top {
   width: 100%;
-  height: 200px;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.custom-scroll-container {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  /* ปรับ padding ให้ Card แรกและสุดท้ายสามารถมาอยู่ตรงกลางจอได้ */
+  padding: 50px 50vw; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.custom-scroll-container::-webkit-scrollbar { display: none; }
+
+.custom-item-card {
+  flex: 0 0 320px;
+  scroll-snap-align: center;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0.3;
+  transform: scale(0.8);
+  filter: blur(2px); /* เพิ่มเบลอให้อันข้างๆ เล็กน้อย */
+}
+
+/* เมื่อ JS สั่งทำงาน */
+.custom-item-card.is-active {
+  opacity: 1;
+  transform: scale(1.1);
+  filter: blur(0);
+  z-index: 5;
+}
+
+.custom-item-card img {
+  width: 100%;
+  height: 220px;
   object-fit: cover;
+  border-radius: 20px 20px 0 0;
 }
 
-.card .card-body {
-  padding: 20px;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex-grow: 1;
-}
-
-.card-text {
-  font-size: 14px;     
-  line-height: 1.4;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.product-box h2 {
-  font-size: 40px;    
-  color: #333;          
+.custom-card-content {
+  padding: 25px;
   text-align: center;
 }
 
-.product-box p:nth-child(2) {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
+/* ปุ่ม Nav */
+.custom-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #ddd;
+  z-index: 100;
+  cursor: pointer;
 }
+.custom-nav-btn.prev { left: 20px; }
+.custom-nav-btn.next { right: 20px; }
 
-.btn-primary {
-    background: linear-gradient(135deg, #25a9dd 0%, #1e8cb8 100%); /* ไล่เฉดสีฟ้า */
-    color: white !important;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(37, 169, 221, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-align: center;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, #1e8cb8 0%, #25a9dd 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(37, 169, 221, 0.5);
-    color: white !important;
-}
-
-.btn-primary:active {
-    transform: translateY(-1px);
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); 
-  }
+.custom-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: #25a9dd;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 14px;
 }
 
 @media (max-width: 576px) {

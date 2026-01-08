@@ -51,3 +51,5 @@ window.addEventListener("hashchange", loadPage);
 
 // โหลดครั้งแรก
 loadPage();
+
+
