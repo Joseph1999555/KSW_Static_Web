@@ -79,6 +79,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
 /* กล่องแต่ละอัน */
@@ -165,7 +168,8 @@ body {
   transition: transform 0.4s ease;
 }
 
-.about-image img:hover {
+/* HOVERRRRRRRRR */
+.about-image img:hover { 
   transform: scale(1.03);
 }
 
@@ -227,6 +231,9 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
 .contact-image img {
@@ -234,7 +241,14 @@ body {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
 }
+
+.contact-image img:hover { 
+  transform: scale(1.03);
+}
+
 
 .contact-info {
   display: flex;
