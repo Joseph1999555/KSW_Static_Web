@@ -50,6 +50,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Sukhumvit Set", -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1;
 }
 
 /* Main Section */
@@ -80,6 +87,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
 /* กล่องแต่ละอัน */
@@ -152,6 +162,17 @@ body {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+<<<<<<< HEAD
+=======
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+  cursor: zoom-in;
+}
+
+/* HOVERRRRRRRRR */
+.about-image img:hover { 
+  transform: scale(1.03);
+>>>>>>> ce4622cbd1c911f49abb3f50bd39f9fb298c09fc
 }
 
 .about-content {
@@ -193,6 +214,9 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
 .contact-image img {
@@ -200,7 +224,14 @@ body {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
 }
+
+.contact-image img:hover { 
+  transform: scale(1.03);
+}
+
 
 .contact-info {
   display: flex;
@@ -331,4 +362,97 @@ body {
   .product-box h2 {
     font-size: 28px;
   }
+}
+
+/* spinner */
+/* LOADING OVERLAY */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ซ่อนไว้ก่อน */
+.hidden {
+  display: none;
+}
+
+/* SPINNER */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ddd;
+  border-top: 5px solid #000033;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* SKELETON BASE */
+.skeleton {
+  padding: 60px 20px;
+}
+
+.sk-title {
+  width: 60%;
+  height: 28px;
+  margin: 0 auto 40px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  animation: shimmer 1.4s infinite;
+}
+
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.sk-card {
+  height: 200px;
+  border-radius: 12px;
+  background: #e0e0e0;
+  animation: shimmer 1.4s infinite;
+}
+
+@media (max-width: 900px) {
+  .sk-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .sk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SHIMMER EFFECT */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.sk-title,
+.sk-card {
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f5f5f5 37%,
+    #e0e0e0 63%
+  );
+  background-size: 400% 100%;
 }
