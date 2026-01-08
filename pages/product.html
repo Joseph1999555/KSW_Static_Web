@@ -1,94 +1,53 @@
-<section class="custom-product-section">
-  <button class="custom-nav-btn prev" onclick="customScrollNav(-1)">&#10094;</button>
-  <button class="custom-nav-btn next" onclick="customScrollNav(1)">&#10095;</button>
+<section class="product">
+  <div class="product-box">
+    <h2>We Deliver Best Quality</h2>
 
-  <div class="custom-scroll-container" id="customScrollContainer">
-    <div class="custom-item-card">
-      <img src="images/แสลน กรองแสง3.jpg" alt="...">
-      <div class="custom-card-content">
-        <h5>สแลน กรองแสง</h5>
-        <p>ผลิตภัณฑ์เกรด A เพื่อการใช้งานระยะยาว</p>
-        <a href="#" class="custom-btn">รายละเอียด</a>
+    <div class="card-container"> 
+      <div class="card">
+        <img src="images/แสลน กรองแสง3.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">สแลน กรองแสง</h5>
+          <p class="card-text">ทำไมควรเลือก สแลนกรองแสง "ระบบทอ" ผลิตภัณฑ์เกรด A เพื่อการใช้งานระยะยาว?</p>
+          <a href="#" class="btn btn-primary">รายละเอียด</a>
+        </div>
       </div>
-    </div>
-    <div class="custom-item-card">
-      <img src="images/พลาสติกโรงเรือน.jpg" alt="...">
-      <div class="custom-card-content">
-        <h5>พลาสติก โรงเรือน</h5>
-        <p>ผสมสาร UV เข้มข้น 7% ทนทานกว่า</p>
-        <a href="#" class="custom-btn">รายละเอียด</a>
+
+      <div class="card">
+        <img src="images/พลาสติกโรงเรือน.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">พลาสติก โรงเรือน</h5>
+          <p class="card-text">พลาสติกคลุมโรงเรือนเกรดพรีเมียม ผสมสาร UV เข้มข้น 7% เคล็ดลับอายุการใช้งานที่ยาวนานกว่า...</p>
+          <a href="#" class="btn btn-primary">รายละเอียด</a>
+        </div>
       </div>
-    </div>
-    <div class="custom-item-card">
-      <img src="images/มุ้งขาว1.jpg" alt="...">
-      <div class="custom-card-content">
-        <h5>มุ้งขาว</h5>
-        <p>นวัตกรรม "เม็ดใหม่ 100%" เพื่อเกษตรกร</p>
-        <a href="#" class="custom-btn">รายละเอียด</a>
+
+      <div class="card">
+        <img src="images/มุ้งขาว1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">มุ้งขาว</h5>
+          <p class="card-text">มุ้งไนลอนกรองแสงเกรดพรีเมียม นวัตกรรม "เม็ดใหม่ 100%" เพื่อเกษตรกรและงานประมง...</p>
+          <a href="#" class="btn btn-primary">รายละเอียด</a>
+        </div>
       </div>
-    </div>
-    <div class="custom-item-card">
-      <img src="images/พลาสติกคลุมดิน ระบายอากาศ9.jpg" alt="...">
-      <div class="custom-card-content">
-        <h5>พลาสติกคลุมดิน</h5>
-        <p>นวัตกรรมเพื่อ "รากพืช" แข็งแรง โตไว</p>
-        <a href="#" class="custom-btn">รายละเอียด</a>
+
+      <div class="card">
+        <img src="images/พลาสติกคลุมดิน ระบายอากาศ9.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">พลาสติกคลุมดิน ระบายอากาศ</h5>
+          <p class="card-text">พลาสติกคลุมดินระบายอากาศ: นวัตกรรมเพื่อ "รากพืช" แข็งแรง โตไว ไร้เชื้อรา</p>
+          <a href="#" class="btn btn-primary">รายละเอียด</a>
+        </div>
       </div>
-    </div>
+
+      <div class="card">
+        <img src="images/พลาสติกกำจัดวัชพืช.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">พลาสติกกำจัดวัชพืช</h5>
+          <p class="card-text">บอกลาวัชพืชและแมลง! ยกระดับฟาร์มระบบปิดด้วย "ผ้าปูพื้นทางเลือกใหม่" ทนทาน ไม่สะสมความชื้น!</p>
+          <a href="#" class="btn btn-primary">รายละเอียด</a>
+        </div>
+      </div>
+
+      </div>
   </div>
 </section>
-<script>
-window.customScrollNav = function(dir) {
-  const container = document.getElementById('customScrollContainer');
-  const items = container.querySelectorAll('.custom-item-card');
-  if (items.length > 0) {
-    const gap = 30; // ต้องตรงกับ gap ใน CSS
-    const scrollAmount = items[0].offsetWidth + gap;
-    container.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
-  }
-};
-
-(function() {
-  const container = document.getElementById('customScrollContainer');
-  if (!container) return;
-
-  // ฟังก์ชันคำนวณ Focus แบบใหม่ (แม่นยำ 100%)
-  const updateFocus = () => {
-    const containerRect = container.getBoundingClientRect();
-    const centerLine = containerRect.left + containerRect.width / 2;
-    const cards = container.querySelectorAll('.custom-item-card');
-
-    cards.forEach(card => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const distance = Math.abs(centerLine - cardCenter);
-
-      // ถ้าระยะห่างจากกึ่งกลางน้อยกว่า 100px ให้ Active
-      if (distance < 150) {
-        card.classList.add('is-active');
-      } else {
-        card.classList.remove('is-active');
-      }
-    });
-  };
-
-  // ดักจับ Mouse Wheel
-  container.addEventListener('wheel', (e) => {
-    if (e.deltaY !== 0) {
-      e.preventDefault();
-      container.scrollLeft += e.deltaY;
-    }
-  }, { passive: false });
-
-  // อัปเดตเมื่อ Scroll
-  container.addEventListener('scroll', updateFocus);
-  
-  // รันครั้งแรก (ใช้ความล่าช้าเล็กน้อยเพื่อให้ Browser คำนวณ Layout เสร็จ)
-  window.addEventListener('load', () => {
-    setTimeout(updateFocus, 500);
-  });
-  
-  // สำรองสำหรับกรณีเลื่อนมือถือ
-  updateFocus();
-})();
-</script>
