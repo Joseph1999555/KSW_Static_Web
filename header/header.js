@@ -6,7 +6,7 @@ fetch("header/header.html")
     });
 
 function initHeader() {
-    const bannerEl = document.querySelector('.site-header');
+    const bannerEl = document.querySelector('.site-banner');
     const titleEl = document.getElementById('page-title');
 
     function setHeaderBg(bg) {
