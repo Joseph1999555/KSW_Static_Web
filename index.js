@@ -7,7 +7,6 @@ function loadIncludes() {
   });
 }
 
-
 // routes
 const routes = {
   "/": "pages/main.html",
@@ -23,18 +22,32 @@ function getPath() {
   return location.hash.replace("#", "") || "/";
 }
 
+// loader time
+const MIN_LOADING_TIME = 500; // loader time
+
 function loadPage() {
   const path = getPath();
   const page = routes[path] || routes["/"];
 
+  showSkeleton();
+  const start = Date.now();
+
   fetch(page)
-    .then(r => r.text())
+    .then(res => res.text())
     .then(html => {
-      document.getElementById("app").innerHTML = html;
-      loadIncludes();
+      const elapsed = Date.now() - start;
+      const delay = Math.max(0, 400 - elapsed);
+
+      setTimeout(() => {
+        document.getElementById("app").innerHTML = html;
+        loadIncludes();
+      }, delay);
+    })
+    .catch(() => {
+      document.getElementById("app").innerHTML =
+        "<h2>โหลดไม่สำเร็จ</h2>";
     });
 }
-
 
 
 // ดักคลิก
@@ -45,6 +58,14 @@ document.addEventListener("click", e => {
   e.preventDefault();
   location.hash = link.getAttribute("href");
 });
+
+// loader functions
+function showSkeleton() {
+  const tpl = document.getElementById("skeleton-template");
+  document.getElementById("app").innerHTML = tpl.innerHTML;
+}
+
+
 
 // เปลี่ยน hash
 window.addEventListener("hashchange", loadPage);
