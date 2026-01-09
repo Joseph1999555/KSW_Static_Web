@@ -265,15 +265,24 @@ body {
   }
 }
 
+ /* VIEW PRODUCT DESKTOP */
 .very-hero {
   position: relative;
   overflow: visible;
+}
+
+.very-hero h1 {
+
+  justify-content: center;  
+  align-items: center;
+  text-align: center;
 }
 
 .product {
   display: flex;
   justify-content: center;
   padding: 50px 10px;
+  overflow: hidden;
 }
 
 .hero {
@@ -294,14 +303,13 @@ body {
 .item {
   position: absolute;
   top: 50%;
-  width: 230px;
-  height: 360px;
+  width: 300px;
+  height: 350px;
   transform: translateY(-50%);
   border-radius: 18px;
   background-size: cover;
   background-position: center;
   transition: all .7s cubic-bezier(.4,0,.2,1);
-  opacity: .85;
   z-index: 1;
 }
 
@@ -316,8 +324,8 @@ body {
 }
 
 .item.pos-1 { left: 60%; z-index: 4; }
-.item.pos-2 { left: 80%; z-index: 3; }
-.item.pos-3 { left: 100%; z-index: 2; opacity: .6; }
+.item.pos-2 { left: 87%; z-index: 3; }
+.item.pos-3 { left: 114%; z-index: 2;}
 
 .content {
   position: absolute;
@@ -353,7 +361,6 @@ body {
   cursor: pointer;
 }
 
-/* ปุ่ม */
 .buttonNP {
   position: absolute;
   bottom: 40px;
@@ -370,4 +377,140 @@ body {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+}
+
+/* ===== MOBILE ALL DEVICES ===== */
+@media (max-width: 768px) {
+  .product {
+    padding: 32px 0 36px;
+    background: #fff;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: clamp(320px, 70vw, 420px);
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .item.pos-main {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: none;
+    border-radius: 0;
+    z-index: 1;
+  }
+
+  .item.pos-1 {
+    position: absolute;
+    width: clamp(100px, 12vw, 500px);
+    height: clamp(100px, 12vw, 260px);
+    top: clamp(280px, 12vw, 250px);
+    left: clamp(230px, 12vw, 250px);
+    border-radius: 18px;
+    z-index: 4;
+    box-shadow: 0 14px 34px rgba(255, 255, 255, 0.38);
+  }
+
+  .item.pos-2,.item.pos-3 {
+    display: none;
+  }
+
+  .item.pos-main .content {
+    position: absolute;
+    left: clamp(12px, 4vw, 24px);
+    bottom: clamp(20px, 7vw, 40px);
+    max-width: 70%;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.6),
+      rgba(0,0,0,.15)
+    );
+  }
+
+  .content h1 {
+    font-size: clamp(18px, 4.5vw, 22px);
+    margin-bottom: 8px;
+  }
+
+  .content p {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .content button {
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+
+  .buttonNP {
+    position: relative;
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    z-index: 10;
+  }
+
+  .buttonNP button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product {
+  padding: 80px 0 100px;
+}
+
+.hero {
+  position: relative;
+  width: 86vw;                 
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: visible;
+  box-shadow: 40px 40px 60px rgba(0,0,0,.4);
+}
+
+.item.pos-main {
+  position: absolute;
+  width: 108%;                
+  height: 108%;
+  left: -4%;                  
+  top: -4%;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.item.pos-1 {
+  position: absolute;
+  width: clamp(300px, 18vw, 300px);
+  height: clamp(200px, 14vw, 220px);
+  left: clamp(400px, -6vw, -40px);   
+  top: clamp(450px, 4vw, 40px);     
+  border-radius: 20px;
+  z-index: 20;
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 28px 50px rgba(0,0,0,.4),
+    0 0 0 5px rgba(255,255,255,.08);
+}
+
+.item.pos-2,.item.pos-3 {
+  display: none;
+}
 }
