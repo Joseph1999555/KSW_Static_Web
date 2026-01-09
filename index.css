@@ -101,6 +101,7 @@ body {
 .main-item .logo img {
   width: 64px;
   height: auto;
+  color: #00AEEF;
 }
 
 /* หัวข้อในการ์ด */
@@ -165,6 +166,24 @@ body {
   margin-top: 0;
 }
 
+.about-content h2 {
+  margin-top: 0;
+  position: relative;
+  padding-left: 14px;
+}
+
+.about-content h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 60%;
+  background: #00AEEF;
+  border-radius: 2px;
+}
+
+
 .about-content p {
   line-height: 1.6;
   color: #333;
@@ -207,7 +226,6 @@ body {
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  /* background-color: red; */
   margin-left: 30px;
 }
 
@@ -222,7 +240,6 @@ body {
 
 .info-item h3 {
   display: flex;
-  /* ← ตัวนี้แหละที่หาย */
   align-items: center;
   gap: 10px;
   margin-bottom: 3px;

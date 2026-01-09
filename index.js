@@ -24,9 +24,6 @@ function getPath() {
   return location.hash.replace("#", "") || "/";
 }
 
-// loader time
-const MIN_LOADING_TIME = 500; // loader time
-
 function loadPage() {
   const path = getPath();
   const page = routes[path] || routes["/"];
