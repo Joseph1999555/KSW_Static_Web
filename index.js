@@ -1,3 +1,5 @@
+console.log("main script loaded");
+
 // include partials
 function loadIncludes() {
   document.querySelectorAll("[data-include]").forEach(el => {
@@ -69,3 +71,5 @@ window.addEventListener("hashchange", loadPage);
 
 // โหลดครั้งแรก
 loadPage();
+
+

@@ -50,13 +50,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Sukhumvit Set", -apple-system, BlinkMacSystemFont, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-#app {
-  flex: 1;
 }
 
 /* Main Section */
@@ -89,9 +82,6 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 0.8s ease forwards;
 }
 
 /* กล่องแต่ละอัน */
@@ -158,16 +148,6 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   align-items: center;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .about-image img {
@@ -191,6 +171,7 @@ body {
   width: 100%;
 }
 
+.about-content h2,
 .about-content h3 {
   margin-top: 0;
 }
@@ -217,7 +198,6 @@ body {
   line-height: 1.6;
   color: #333;
   font-size: 20px;
-  max-width: 720px;
 }
 
 @media (max-width: 1000px) {
@@ -242,9 +222,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 0.8s ease forwards;
 }
 
 .contact-image img {
@@ -252,8 +229,6 @@ body {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 0.4s ease;
 }
 
 .contact-image img:hover {
@@ -323,152 +298,249 @@ body {
   }
 }
 
-/* Product Section */
-
-.product-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 0;
-  width: 90%;
-  max-width: 1200px;
-  overflow: hidden;
+ /* VIEW PRODUCT DESKTOP */
+.very-hero {
   position: relative;
-  margin: 0 auto;
+  overflow: visible;
 }
 
-.card-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 30px;
-  width: max-content;
-  margin-top: 40px;
-  animation: scroll-left 30s linear infinite;
-}
+.very-hero h1 {
 
-.card-container:hover {
-  animation-play-state: paused;
-}
-
-.card {
-  width: 18rem;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card .card-body {
-  padding: 20px;
-  flex-direction: column;
+  justify-content: center;  
   align-items: center;
   text-align: center;
-  flex-grow: 1;
 }
 
-.card-text {
-  font-size: 14px;
-  line-height: 1.4;
-  color: #666;
-  margin-bottom: 15px;
+.product {
+  display: flex;
+  justify-content: center;
+  padding: 50px 10px;
+  overflow: hidden;
 }
 
-.product-box h2 {
-  font-size: 40px;
-  color: #333;
-  text-align: center;
+.hero {
+  position: relative;
+  width: 1250px;
+  height: 700px;
+  border-radius: 15px;
+  overflow: visible;
+  box-shadow: 25px 25px 40px rgba(0,0,0,.35);
 }
 
-.product-box p:nth-child(2) {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #25a9dd 0%, #1e8cb8 100%);
-  /* ไล่เฉดสีฟ้า */
-  color: white !important;
+.item {
+  position: absolute;
+  top: 50%;
+  width: 300px;
+  height: 350px;
+  transform: translateY(-50%);
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  transition: all .7s cubic-bezier(.4,0,.2,1);
+  z-index: 1;
+}
+
+.item.pos-main {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  z-index: 1;
+  opacity: 1;
+}
+
+.item.pos-1 { left: 60%; z-index: 4; }
+.item.pos-2 { left: 87%; z-index: 3; }
+.item.pos-3 { left: 114%; z-index: 2;}
+
+.content {
+  position: absolute;
+  left: 80px;
+  bottom: 220px;
+  max-width: 420px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: .6s ease;
+}
+
+.item.active .content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content h1 {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+.content p {
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.content button {
+  padding: 12px 28px;
   border: none;
-  padding: 10px 30px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(37, 169, 221, 0.3);
-  transition: all 0.3s ease;
+  background: #fff;
+  border-radius: 6px;
   cursor: pointer;
-  text-align: center;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #1e8cb8 0%, #25a9dd 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(37, 169, 221, 0.5);
-  color: white !important;
+.buttonNP {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
 }
 
-.btn-primary:active {
-  transform: translateY(-1px);
+.buttonNP button {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
+/* ===== MOBILE ALL DEVICES ===== */
+@media (max-width: 768px) {
+  .product {
+    padding: 32px 0 36px;
+    background: #fff;
   }
 
-  100% {
-    transform: translateX(-50%);
+  .hero {
+    position: relative;
+    width: 100%;
+    height: clamp(320px, 70vw, 420px);
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+  }
+
+  .item.pos-main {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: none;
+    border-radius: 0;
+    z-index: 1;
+  }
+
+  .item.pos-1 {
+    position: absolute;
+    width: clamp(100px, 12vw, 500px);
+    height: clamp(100px, 12vw, 260px);
+    top: clamp(280px, 12vw, 250px);
+    left: clamp(230px, 12vw, 250px);
+    border-radius: 18px;
+    z-index: 4;
+    box-shadow: 0 14px 34px rgba(255, 255, 255, 0.38);
+  }
+
+  .item.pos-2,.item.pos-3 {
+    display: none;
+  }
+
+  .item.pos-main .content {
+    position: absolute;
+    left: clamp(12px, 4vw, 24px);
+    bottom: clamp(20px, 7vw, 40px);
+    max-width: 70%;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.6),
+      rgba(0,0,0,.15)
+    );
+  }
+
+  .content h1 {
+    font-size: clamp(18px, 4.5vw, 22px);
+    margin-bottom: 8px;
+  }
+
+  .content p {
+    font-size: clamp(12px, 3.5vw, 14px);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .content button {
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+
+  .buttonNP {
+    position: relative;
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    z-index: 10;
+  }
+
+  .buttonNP button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
   }
 }
 
-@media (max-width: 576px) {
-  .product-box {
-    width: 95%;
-    padding: 40px 0;
-  }
-
-  .product-box h2 {
-    font-size: 28px;
-  }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product {
+  padding: 80px 0 100px;
 }
 
-
-/* SKELETON BASE */
-.skeleton {
-  padding: 60px 20px;
+.hero {
+  position: relative;
+  width: 86vw;                 
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: visible;
+  box-shadow: 40px 40px 60px rgba(0,0,0,.4);
 }
 
-.sk-title {
-  width: 60%;
-  height: 28px;
-  margin: 0 auto 40px;
-  border-radius: 8px;
-  background: #e0e0e0;
-  animation: shimmer 1.4s infinite;
+.item.pos-main {
+  position: absolute;
+  width: 108%;                
+  height: 108%;
+  left: -4%;                  
+  top: -4%;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
 }
 
-.sk-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.item.pos-1 {
+  position: absolute;
+  width: clamp(300px, 18vw, 300px);
+  height: clamp(200px, 14vw, 220px);
+  left: clamp(400px, -6vw, -40px);   
+  top: clamp(450px, 4vw, 40px);     
+  border-radius: 20px;
+  z-index: 20;
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 28px 50px rgba(0,0,0,.4),
+    0 0 0 5px rgba(255,255,255,.08);
 }
 
 .sk-card {
@@ -476,6 +548,7 @@ body {
   border-radius: 12px;
   background: #e0e0e0;
   animation: shimmer 1.4s infinite;
+}
 }
 
 @media (max-width: 900px) {
