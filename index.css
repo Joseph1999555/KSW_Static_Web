@@ -66,12 +66,15 @@ body {
   text-align: center;
 }
 
-.main>h1 {
-  font-size: 32px;
+.main > h1 {
+  font-size: clamp(22px, 4vw, 32px);
   margin: 0 auto 12px;
-  width: 50%;
+  max-width: 720px;
+  width: 100%;
   text-align: center;
+  padding: 0 16px;
 }
+
 
 .main>h2 {
   font-size: 18px;
