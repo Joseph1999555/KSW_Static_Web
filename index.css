@@ -310,6 +310,20 @@ body {
   height: 24px;
 }
 
+.phone-link,
+.email-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.phone-link:hover,
+.email-link:hover {
+  color: #00AEEF;
+  text-decoration: underline;
+}
+
+
 
 @media (max-width: 1000px) {
   .contact-box {
