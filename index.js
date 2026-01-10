@@ -20,10 +20,12 @@ const routes = {
   "/contact": "pages/contact.html"
 };
 
+// ดึง path ปัจจุบัน
 function getPath() {
-  return location.hash.replace("#", "") || "/";
+  return location.pathname || "/";
 }
 
+// โหลดหน้าเพจ
 function loadPage() {
   const path = getPath();
   const page = routes[path] || routes["/"];
@@ -55,8 +57,12 @@ document.addEventListener("click", e => {
   if (!link) return;
 
   e.preventDefault();
-  location.hash = link.getAttribute("href");
+  const path = link.getAttribute("href");
+
+  history.pushState({}, "", path);
+  loadPage();
 });
+
 
 // loader functions
 function showSkeleton() {
@@ -64,8 +70,6 @@ function showSkeleton() {
   console.log("tpl:", tpl);
   document.getElementById("app").innerHTML = tpl.innerHTML;
 }
-
-
 
 // เปลี่ยน hash
 window.addEventListener("hashchange", loadPage);
