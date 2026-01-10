@@ -61,7 +61,13 @@ document.addEventListener("click", e => {
 // loader functions
 function showSkeleton() {
   const tpl = document.getElementById("skeleton-template");
-  document.getElementById("app").innerHTML = tpl.innerHTML;
+  console.log("tpl:", tpl);
+  try {
+      document.getElementById("app").innerHTML = tpl.innerHTML;
+
+  }catch(err){
+      console.log("no skeleton template", err);
+  }
 }
 
 

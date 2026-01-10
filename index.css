@@ -165,6 +165,17 @@ body {
   transform: scale(1.03);
 }
 
+.about-image h3 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.about-image li {
+  line-height: 1.6;
+  color: #333;
+  font-size: 20px;
+}
+
 .about-content {
 
   padding: 0;
@@ -195,7 +206,7 @@ body {
 
 
 .about-content p {
-  line-height: 1.6;
+  line-height: 1.2;
   color: #333;
   font-size: 20px;
 }
@@ -543,6 +554,59 @@ body {
     0 0 0 5px rgba(255,255,255,.08);
 }
 
+/* spinner */
+/* LOADING OVERLAY */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ซ่อนไว้ก่อน */
+.hidden {
+  display: none;
+}
+
+/* SPINNER */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ddd;
+  border-top: 5px solid #000033;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* SKELETON BASE */
+.skeleton {
+  padding: 60px 20px;
+}
+
+.sk-title {
+  width: 60%;
+  height: 28px;
+  margin: 0 auto 40px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  animation: shimmer 1.4s infinite;
+}
+
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
 .sk-card {
   height: 200px;
   border-radius: 12px;
@@ -621,6 +685,15 @@ body {
   color: #fff100;
 }
 
+.overview-number {
+  font-size: clamp(24px, 4vw, 45px);
+  font-weight: 900;
+  line-height: 1;
+  color: #fff100;
+  margin: 6px 0;
+}
+
+
 .icon {
   width: 48px;
   height: 48px;
@@ -648,6 +721,13 @@ body {
   margin-top: 10px;
 }
 
+.section-subtitle {
+  font-size: 2em;
+  color: #666666;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
 .service-box {
   display: flex;
   flex-wrap: wrap;
@@ -672,7 +752,8 @@ body {
 }
 
 .service-item:hover h2,
-.service-item:hover h3 {
+.service-item:hover h3,
+.service-item:hover p {
   color: #00AEEF;
 }
 
@@ -683,6 +764,12 @@ body {
 }
 
 .service-item h3 {
-  font-size: 1em;
+  font-size: 1.2em;
   color: #666666;
+}
+
+.service-item p {
+  font-size: 1em;
+  color: #555555;
+  line-height: 1.4;
 }
