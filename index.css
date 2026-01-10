@@ -57,7 +57,7 @@ body {
 
 #app {
   flex: 1;
-  min-height: 70vh;
+  min-height: 100vh;
 }
 
 /* Main Section */
@@ -621,6 +621,17 @@ body {
 }
 
 /* SKELETON BASE */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .skeleton {
   width: 90%;
   max-width: 1200px;
@@ -632,8 +643,14 @@ body {
   height: 32px;
   margin: 0 auto 32px;
   border-radius: 8px;
-  background: #e0e0e0;
+  background: linear-gradient(100deg,
+      #e0e0e0 30%,
+      #f0f0f0 50%,
+      #e0e0e0 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
 }
+
 
 .sk-grid {
   display: grid;
@@ -644,10 +661,39 @@ body {
 .sk-card {
   height: 280px;
   border-radius: 16px;
+  padding: 16px;
   background: #e0e0e0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-@media (max-width: 576px) {
+.sk-img,
+.sk-line {
+  border-radius: 8px;
+  background: linear-gradient(100deg,
+      #e0e0e0 30%,
+      #f0f0f0 50%,
+      #e0e0e0 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+.sk-img {
+  height: 140px;
+}
+
+.sk-line {
+  height: 14px;
+}
+
+.sk-line.short {
+  width: 60%;
+}
+
+
+@media (max-width: 900px) {
   .sk-title {
     width: 80%;
     height: 24px;
@@ -672,46 +718,14 @@ body {
   }
 }
 
-.skeleton * {
-  background: linear-gradient(
-    100deg,
-    #e0e0e0 30%,
-    #f0f0f0 50%,
-    #e0e0e0 70%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.3s infinite;
-}
-
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
-}
-
-
-
-/* SHIMMER EFFECT */
-@keyframes shimmer {
-  0% {
-    background-position: -400px 0;
-  }
-
-  100% {
-    background-position: 400px 0;
-  }
-}
-
-.sk-title,
-.sk-card {
-  background: linear-gradient(90deg,
-      #e0e0e0 25%,
-      #f5f5f5 37%,
-      #e0e0e0 63%);
-  background-size: 400% 100%;
 }
 
 /* overview section */
