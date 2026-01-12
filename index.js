@@ -25,6 +25,12 @@ function getPath() {
   return location.pathname || "/";
 }
 
+window.navigate = function (path) {
+    history.pushState({}, "", path);
+    loadPage(path); // หรือฟังก์ชัน render ของมึง
+};
+
+
 // โหลดหน้าเพจ
 function loadPage() {
   const path = getPath();
