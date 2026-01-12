@@ -46,13 +46,54 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "THSarabunNew";
+  src: url("/fonts/THSarabunNew/THSarabunNew.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "THSarabunNew";
+  src: url("/fonts/THSarabunNew/THSarabunNew Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "THSarabunNew";
+  src: url("/fonts/THSarabunNew/THSarabunNew Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "THSarabunNew";
+  src: url("/fonts/THSarabunNew/THSarabunNew Bolditalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-heading: "Sukhumvit Set", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "TH Sarabun New", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "Sukhumvit Set", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 #app {
@@ -131,19 +172,25 @@ ul.main-box {
   color: #00AEEF;
 }
 
-/* หัวข้อในการ์ด */
+
 .main-item h2 {
   font-size: 24px;
   margin-bottom: 8px;
 }
 
-/* เนื้อหา */
+/* หัวข้อในการ์ด */
 .main-item h3 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: normal;
   line-height: 1.6;
 }
 
+/* เนื้อหา */
+.main-item p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #555;
+}
 
 
 @media (max-width: 1024px) {
@@ -191,25 +238,25 @@ ul.main-box {
 }
 
 .about-highlight h3 {
-  font-size: 1.5em;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.about-highlight ul {
+  margin-top: 0 ;
   margin-bottom: 0;
 }
 
 .about-highlight li {
   line-height: 1.6;
   color: #333;
-  font-size: 20px;
-}
-
-.about-image h3 {
-  font-size: 1.5em;
-  margin-bottom: 0;
+  font-size: 18px;
 }
 
 .about-image li {
   line-height: 1.6;
   color: #333;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .about-content {
@@ -224,7 +271,9 @@ ul.main-box {
 }
 
 .about-content h3 {
+  font-size: 24px;
   margin-top: 0;
+  margin-bottom: 5px;
   position: relative;
   padding-left: 14px;
 }
@@ -240,11 +289,19 @@ ul.main-box {
   border-radius: 2px;
 }
 
+.about-content h4 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #333;
+}
+
 
 .about-content p {
-  line-height: 1.2;
+  line-height: 1;
   color: #333;
   font-size: 20px;
+  margin-top: 0;
 }
 
 @media (max-width: 1000px) {
@@ -340,9 +397,8 @@ ul.main-box {
 
 .phone-link,
 .email-link {
-  color: #000;
+  color: #333;
   text-decoration: none;
-  font-weight: 500;
 }
 
 .phone-link:hover,
@@ -788,7 +844,7 @@ ul.main-box {
 }
 
 .overview-item h3 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.4;
   color: #fff100;
@@ -882,12 +938,12 @@ li.service-item {
 }
 
 .service-item h3 {
-  font-size: 1.2em;
+  font-size: 20px;
   color: #666666;
 }
 
 .service-item p {
-  font-size: 1em;
+  font-size: 18px;
   color: #555555;
   line-height: 1.4;
 }

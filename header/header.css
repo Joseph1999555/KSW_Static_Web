@@ -50,6 +50,8 @@
   margin: 0;
   color: #00AEEF;
   font-size: 40px;
+  font-family: var(--font-heading);
+  font-weight: bold;
 }
 
 .logo a {
