@@ -434,7 +434,7 @@ ul.main-box {
   background: rgba(245, 245, 245, 0.55);
 }
 
-.hero h1 {
+.hero h3 {
   text-align: center;
   color: #575757;
   font-size: clamp(18px, 3vw, 30px);
@@ -505,7 +505,7 @@ ul.main-box {
     border-radius: 0 0 10px 10px;
   }
 
-.content h1 {
+.content h3 {
   font-size: 18px;
 }
 
@@ -601,7 +601,7 @@ ul.main-box {
 
   .buttonNP {display: none;}
   .hero {
-    padding: 5px 110px;
+    padding: 10px 110px;
     position: relative;
     padding-bottom: 0;
     bottom: 20px;
