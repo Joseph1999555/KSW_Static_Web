@@ -13,15 +13,13 @@
   font-style: normal;
   font-display: swap;
 }
-
 /* @font-face {
-  font-family: "Sukhumvit Set";
-  src: url("/fonts/sukhumvit-set/SukhumvitSet-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+font-family: "Sukhumvit Set";
+src: url("/fonts/sukhumvit-set/SukhumvitSet-Regular.ttf") format("truetype");
+font-weight: 400;
+font-style: normal;
+font-display: swap;
 } */
-
 @font-face {
   font-family: "Sukhumvit Set";
   src: url("/fonts/sukhumvit-set/SukhumvitSet-Medium.ttf") format("truetype");
@@ -92,7 +90,7 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-heading);
 }
 
@@ -112,8 +110,6 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   border: 0;
 }
-
-
 /* Main Section */
 .main {
   padding: 60px 20px;
@@ -129,7 +125,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-
 .main>h2 {
   font-size: 24px;
   font-weight: normal;
@@ -137,7 +132,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto 40px;
   line-height: 1.6;
 }
-
 /* กล่องรวม 4 อัน */
 .main-box {
   list-style: none;
@@ -149,7 +143,6 @@ h1, h2, h3, h4, h5, h6 {
 ul.main-box {
   padding: 0;
 }
-
 /* กล่องแต่ละอัน */
 .main-item {
   background: #f7f7f7;
@@ -157,7 +150,6 @@ ul.main-box {
   border-radius: 12px;
   text-align: center;
 }
-
 /* โลโก้ */
 .main-item .logo {
   display: flex;
@@ -172,26 +164,22 @@ ul.main-box {
   color: #00AEEF;
 }
 
-
 .main-item h2 {
   font-size: 24px;
   margin-bottom: 8px;
 }
-
 /* หัวข้อในการ์ด */
 .main-item h3 {
   font-size: 24px;
   font-weight: normal;
   line-height: 1.6;
 }
-
 /* เนื้อหา */
 .main-item p {
   font-size: 20px;
   line-height: 1.6;
   color: #555;
 }
-
 
 @media (max-width: 1024px) {
   .main-box {
@@ -204,8 +192,6 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
-
-
 /* About Section */
 .about {
   padding: 60px 20px;
@@ -231,7 +217,6 @@ ul.main-box {
   transition: transform 0.4s ease;
   cursor: zoom-in;
 }
-
 /* HOVERRRRRRRRR */
 .about-image img:hover {
   transform: scale(1.03);
@@ -243,7 +228,7 @@ ul.main-box {
 }
 
 .about-highlight ul {
-  margin-top: 0 ;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -296,7 +281,6 @@ ul.main-box {
   color: #333;
 }
 
-
 .about-content p {
   line-height: 1;
   color: #333;
@@ -309,9 +293,7 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
-
 /* Contact Section */
-
 .contact {
   padding: 60px 20px;
   background: #ffffff;
@@ -356,8 +338,6 @@ ul.main-box {
   height: 100%;
   border: 0;
 }
-
-
 
 .contact-info {
   display: flex;
@@ -407,26 +387,34 @@ ul.main-box {
   text-decoration: underline;
 }
 
-
-
 @media (max-width: 1000px) {
   .contact-box {
     grid-template-columns: 1fr;
   }
 }
+
 /* EDIT PRODUCT DESKTOP */
 .product {
-  background: #434a74;
-  padding: 100px clamp(16px, 4vw, 48px);
+  background: #eeeded1e;
+  padding: 40px clamp(10px, 4vw, 48px);
   display: flex;
   justify-content: center;
+}
+
+.very-hero h1 {
+  text-align: center;
+  color: #575757;
+  font-size: clamp(10px, 3vw, 30px);
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero {
   position: relative;
   width: auto;
   max-width: 1100px;
-  padding: 50px 16px 80px;
+  padding: 10px 16px 80px;
   border-radius: 28px;
 }
 
@@ -434,15 +422,22 @@ ul.main-box {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, .18);
+  background: rgba(240, 240, 240, 0.432);
   backdrop-filter: blur(18px);
   border-radius: 20px;
   z-index: 0;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s ease,background .35s ease;
+}
+
+.hero:hover::after {
+  transform: translateY(-6px);
+  box-shadow:0 20px 40px rgba(0, 0, 0, .18),inset 0 1px 0 rgba(255,255,255,.6);
+  background: rgba(245, 245, 245, 0.55);
 }
 
 .hero h1 {
   text-align: center;
-  color: #ffffff;
+  color: #575757;
   font-size: clamp(18px, 3vw, 30px);
   margin-bottom: 20px;
   position: relative;
@@ -454,7 +449,7 @@ ul.main-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
   z-index: 1;
   overflow: hidden;
 }
@@ -470,37 +465,29 @@ ul.main-box {
   top: 0;
   left: 50%;
   width: 300px;
-  height: 360px;
+  height: 350px;
   background-size: cover;
   transform-origin: center center;
-  transition:transform .6s cubic-bezier(.4, 0, .2, 1),opacity .6s ease;
+  transition: transform .6s cubic-bezier(.4, 0, .2, 1), opacity .6s ease;
   opacity: 0;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .item.pos-1 {
-  transform:
-    translateX(-50%) translateX(clamp(-260px, -28vw, -180px)) scale(clamp(.75, .85, .9));
-  opacity: .4;
+  transform:translateX(-50%)translateX(clamp(-300px, -28vw, -180px))scale(clamp(.75, .85, .9));
+  opacity: 1;
   z-index: 1;
 }
 
 .item.pos-2 {
-  transform:
-    translateX(-50%) scale(clamp(.85, 1, 1));
+  transform:translateX(-50%)scale(clamp(.85, 1, 1));
   opacity: 1;
   z-index: 3;
 }
 
 .item.pos-3 {
-  transform: translateX(-50%) translateX(clamp(200px, 30vw, 300px)) scale(.85);
-  opacity: .4;
-  z-index: 1;
-}
-
-.item.pos-3 {
-  transform:translateX(-50%) translateX(clamp(180px, 28vw, 260px)) scale(clamp(.75, .85, .9));
-  opacity: .4;
+  transform:translateX(-50%)translateX(clamp(260px, 28vw, 300px))scale(clamp(.75, .85, .9));
+  opacity: 1;
   z-index: 1;
 }
 
@@ -515,44 +502,23 @@ ul.main-box {
   left: 16px;
   right: 16px;
   max-height: 45%;
-  overflow-y: auto;
-  scrollbar-width: none;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.37);
-  border-radius: 14px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.493);
 }
 
 .content h1 {
   font-size: 18px;
-  margin-bottom: 6px;
-  color: #000000;
 }
 
 .content p {
   font-size: 14px;
-  color: #000000;
-  margin-bottom: 20px;
-  text-align: justify;
-}
-
-.content button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  background: #00aeef;
-  color: #fff;
-  font-size: 13px;
-  cursor: pointer;
 }
 
 .buttonNP {
   position: absolute;
-  bottom: 20px;
+  bottom: 45%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 20px;
+  gap: 58rem;
   z-index: 2;
 }
 
@@ -565,68 +531,110 @@ ul.main-box {
   font-size: 22px;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+/* เมาส์ชี้ */
+.buttonNP button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, .25);
+}
+/* กดปุ่ม → ยุบลง */
+.buttonNP button:active {
+  transform: translateY(2px) scale(.95);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
 }
 /* MOBILE VIEW */
 @media (max-width: 768px) {
+  .product {overflow-x: hidden;}
 
   .item {
-    width: clamp(220px, 80vw, 150px);
-    height: 250px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 250px;
+    height: auto;
+    transform-origin: center;
+    border-radius: 16px;
+    overflow: visible;
+    background-size: cover;
+    background-position: top;
+    padding-top: 200px;
   }
 
-  .hero {
-    padding: 10px 100px 20px; /* สำหรับ title */
-    max-width: 100%;
+  .item .content {
+    inset: auto;
+    margin: -30px 0 0;
+    background: #ffffff;
+    padding: 16px;
+    max-height: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
   }
 
-  .slider {
-    width: 80vw;
-    margin-left: calc(50% - 40vw);
-    margin-right: calc(50% - 40vw);
-    padding: 0;
+  .item .content h1 {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #000;
+  }
+
+  .item .content p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    color: #333;
+  }
+
+  .item .content button {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 8px;
   }
 
   .item.pos-1 {
-    transform:
-      translateX(-50%)
-      translateX(-50%)
-      scale(0.80);
-    opacity: 0.4;
+    transform: translateX(-50%) translateX(-25%) scale(.85);
+    opacity: .4;
   }
 
   .item.pos-2 {
-    transform:
-      translateX(-50%)
-      scale(0.95);
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    z-index: 3;
   }
 
   .item.pos-3 {
-    transform:
-      translateX(-50%)
-      translateX(50%)
-      scale(0.80);
-    opacity: 0.4;
+    transform: translateX(-50%) translateX(25%) scale(.85);
+    opacity: .4;
   }
 
-  .buttonNP {
-    display: none;
-  }
+  .buttonNP {display: none;}
+  .hero {padding: 10px 100px;}
+  .slider {overflow: visible;}
 }
-
 /* DESKTOP VIEW */
 @media (min-width: 1024px) {
-  .product {
-    display: block;
+  .product {display: block;}
+  .hero {margin: 0 auto;}
+  .item {
+    overflow: hidden;           
+    display: flex;
+    align-items: flex-end;       
   }
 
-  .hero {
-    margin: 0 auto;
+  .item .content {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-height: none;
+    padding: 16px;
+    background: rgb(255, 255, 255);
   }
 
-  .hero::after {
-    inset: 0;
-    border-radius: 35px;
-  }
+  .item .content h1 {font-size: 16px;}
+  .item .content p {
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+}
 }
 
 /* SK-CARD */
@@ -805,8 +813,7 @@ ul.service-box {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-li.service-item {
-}
+li.service-item {}
 
 .service-item:hover {
   transform: translateY(-5px);
