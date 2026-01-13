@@ -216,6 +216,7 @@ ul.main-box {
 .about-box {
   max-width: 1500px;
   margin: auto;
+  padding:  0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -261,8 +262,8 @@ ul.main-box {
 
 .about-content {
 
-  padding: 0;
-  width: 100%;
+  padding: 10px;
+  width: auto;
 }
 
 .about-content h2,
@@ -292,13 +293,14 @@ ul.main-box {
 .about-content h4 {
   font-size: 20px;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 6px;
   color: #333;
+  line-height: 1;
 }
 
 
 .about-content p {
-  line-height: 1;
+  line-height: 1.2;
   color: #333;
   font-size: 20px;
   margin-top: 0;
@@ -322,7 +324,7 @@ ul.main-box {
   max-width: 2000px;
   gap: 24px;
   margin: auto;
-  margin-top: 20px;
+  padding:  0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -341,9 +343,8 @@ ul.main-box {
 
 .map-wrapper {
   position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  /* 16:9 */
+  width: auto;
+  padding-bottom: 55%;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
