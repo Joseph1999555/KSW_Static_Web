@@ -83,8 +83,8 @@ function enableMobileSwipe({ items, next, prev }) {
   let startTime = 0;
   let dragging = false;
 
-  const DISTANCE_THRESHOLD = 120; // ต้องลากไกลจริง
-  const TIME_THRESHOLD = 200;     // ms ป้องกัน flick เร็ว
+  const DISTANCE_THRESHOLD = 5; // ต้องลากไกลจริง
+  const TIME_THRESHOLD = 150;     // ms ป้องกัน flick เร็ว
   const DAMPING = 0.3;            // แรงต้าน (ยิ่งน้อยยิ่งหนืด)
 
   const slider = document.querySelector('.slider');
