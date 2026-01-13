@@ -497,11 +497,13 @@ ul.main-box {
 }
 
 .content {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  max-height: 45%;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    padding: 0px;
+    background: #ffffff;
+    box-shadow: none;
+    border-radius: 0 0 10px 10px;
   }
 
 .content h1 {
@@ -551,22 +553,23 @@ ul.main-box {
     position: absolute;
     top: 0;
     left: 50%;
-    width: 250px;
+    width: 260px;
     height: auto;
     transform-origin: center;
     border-radius: 16px;
     overflow: visible;
     background-size: cover;
     background-position: top;
-    padding-top: 200px;
+    padding-top: 230px;
   }
 
   .item .content {
     inset: auto;
-    margin: -30px 0 0;
+    margin: 0 0 0;
     background: #ffffff;
-    padding: 16px;
+    padding: 5px;
     max-height: none;
+    width: 260px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
   }
 
@@ -581,13 +584,6 @@ ul.main-box {
     line-height: 1.5;
     margin-bottom: 14px;
     color: #333;
-  }
-
-  .item .content button {
-    display: inline-block;
-    padding: 8px 14px;
-    font-size: 13px;
-    border-radius: 8px;
   }
 
   .item.pos-1 {
@@ -607,7 +603,16 @@ ul.main-box {
   }
 
   .buttonNP {display: none;}
-  .hero {padding: 10px 100px;}
+  .hero {
+    padding: 5px 110px;
+    position: relative;
+    padding-bottom: 0;
+    bottom: 20px;
+  }
+  .hero::after {
+    inset: 10px 0 -50px 0; 
+    /* top right bottom left */
+  }
   .slider {overflow: visible;}
 }
 /* DESKTOP VIEW */
