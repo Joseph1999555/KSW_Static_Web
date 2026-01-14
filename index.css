@@ -400,7 +400,7 @@ ul.main-box {
   justify-content: center;
 }
 
-.very-hero h1 {
+.very-hero h2 {
   text-align: center;
   color: #575757;
   font-size: clamp(14px, 3vw, 30px);
@@ -434,7 +434,7 @@ ul.main-box {
   background: rgba(245, 245, 245, 0.55);
 }
 
-.hero h2 {
+.hero h3 {
   text-align: center;
   color: #575757;
   font-size: clamp(14px, 3vw, 30px);
@@ -505,7 +505,7 @@ ul.main-box {
     border-radius: 0 0 10px 10px;
   }
 
-.content h2 {
+.content h3 {
   font-size: 16px;
 }
 
@@ -572,7 +572,7 @@ ul.main-box {
     box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
   }
 
-  .item .content h2 {
+  .item .content h3 {
     font-size: 14px;
     margin-bottom: 1px;
     color: #000;
