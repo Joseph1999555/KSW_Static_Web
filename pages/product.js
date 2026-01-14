@@ -2,27 +2,32 @@ let sliderInitialized = false;
 
 function waitForSliderInit() {
   const observer = new MutationObserver(() => {
-    const track = document.querySelector('.slider-track');
-    const next = document.getElementById('next');
-    const prev = document.getElementById('prev');
-    const items = document.querySelectorAll('.item');
+    document.querySelectorAll('.product').forEach(section => {
+      const track = section.querySelector('.slider-track');
+      const items = section.querySelectorAll('.item');
+      const nextBtn = section.querySelector('#next');
+      const prevBtn = section.querySelector('#prev');
 
-    if (!track || items.length < 3) return;
+      if (!track || items.length < 3 || !nextBtn || !prevBtn) return;
 
-    if (!sliderInitialized) {
-      sliderInitialized = true;
-      initSlider();
-    }
+      if (track.dataset.initialized === 'true') return;
+
+      track.dataset.initialized = 'true';
+      initSlider(section);
+    });
   });
 
-  observer.observe(document.body, { childList: true, subtree: true });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 }
 
-function initSlider() {
-  const items = Array.from(document.querySelectorAll('.item'));
+function initSlider(section) {
+  const items = Array.from(section.querySelectorAll('.item'));
   const total = items.length;
 
-  let current = 1; // pos-2 อยู่กลาง
+  let current = 1;
   let isAnimating = false;
 
   function render() {
@@ -55,43 +60,36 @@ function initSlider() {
     setTimeout(() => (isAnimating = false), 600);
   }
 
-  // ===== Desktop buttons =====
-  const nextBtn = document.getElementById('next');
-  const prevBtn = document.getElementById('prev');
+  section.querySelector('#next').onclick = next;
+  section.querySelector('#prev').onclick = prev;
 
-  if (nextBtn && prevBtn) {
-    nextBtn.onclick = next;
-    prevBtn.onclick = prev;
-  }
-
-  // ===== Mobile swipe =====
   enableMobileSwipe({
     items,
     next,
-    prev
+    prev,
+    slider: section.querySelector('.slider')
   });
 
   render();
 }
-
 /* ===============================
    MOBILE SWIPE (FOLLOW FINGER)
 ================================ */
-function enableMobileSwipe({ items, next, prev }) {
+function enableMobileSwipe({ items, next, prev, slider }) {
+  if (!slider) return;
+
   let startX = 0;
   let currentX = 0;
   let startTime = 0;
   let dragging = false;
 
-  const DISTANCE_THRESHOLD = 5; // ต้องลากไกลจริง
-  const TIME_THRESHOLD = 50;     // ms ป้องกัน flick เร็ว
-  // const DAMPING = 0.1;            // แรงต้าน (ยิ่งน้อยยิ่งหนืด)
-
-  const slider = document.querySelector('.slider');
-  if (!slider) return;
+  const DISTANCE_THRESHOLD = 30;
+  const TIME_THRESHOLD = 50;
 
   slider.addEventListener('touchstart', e => {
     if (window.innerWidth > 768) return;
+
+    e.stopPropagation();
 
     startX = e.touches[0].clientX;
     currentX = startX;
@@ -101,23 +99,21 @@ function enableMobileSwipe({ items, next, prev }) {
     items.forEach(item => {
       item.style.transition = 'none';
     });
-  }, { passive: true });
+  }, { passive: false });
 
   slider.addEventListener('touchmove', e => {
     if (!dragging || window.innerWidth > 768) return;
 
+    e.preventDefault();   // ❗ สำคัญ
+    e.stopPropagation();
+
     currentX = e.touches[0].clientX;
-    const deltaX = (currentX - startX) * DAMPING;
+  }, { passive: false });
 
-    items.forEach(item => {
-      item.style.transform =
-        item.style.transform.replace(/translateX\([^)]+\)/g, '') +
-        ` translateX(${deltaX}px)`;
-    });
-  }, { passive: true });
-
-  slider.addEventListener('touchend', () => {
+  slider.addEventListener('touchend', e => {
     if (!dragging || window.innerWidth > 768) return;
+
+    e.stopPropagation();
 
     const distance = currentX - startX;
     const elapsed = Date.now() - startTime;
@@ -128,12 +124,8 @@ function enableMobileSwipe({ items, next, prev }) {
       item.style.transform = '';
     });
 
-    if (
-      Math.abs(distance) > DISTANCE_THRESHOLD &&
-      elapsed > TIME_THRESHOLD
-    ) {
-      if (distance < 0) next();
-      else prev();
+    if (Math.abs(distance) > DISTANCE_THRESHOLD && elapsed > TIME_THRESHOLD) {
+      distance < 0 ? next() : prev();
     }
 
     dragging = false;
@@ -142,5 +134,4 @@ function enableMobileSwipe({ items, next, prev }) {
     startTime = 0;
   });
 }
-
 waitForSliderInit();

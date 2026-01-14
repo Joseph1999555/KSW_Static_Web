@@ -626,7 +626,77 @@ ul.main-box {
 }
 }
 
-/* SK-CARD */
+/* spinner */
+/* LOADING OVERLAY */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ซ่อนไว้ก่อน */
+.hidden {
+  display: none;
+}
+
+/* SPINNER */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ddd;
+  border-top: 5px solid #000033;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* SKELETON BASE */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.sk-title {
+  width: 40%;
+  height: 32px;
+  margin: 0 auto 32px;
+  border-radius: 8px;
+  background: linear-gradient(100deg,
+      #e0e0e0 30%,
+      #f0f0f0 50%,
+      #e0e0e0 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+}
+
+
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
 .sk-card {
   height: 280px;
   border-radius: 16px;
