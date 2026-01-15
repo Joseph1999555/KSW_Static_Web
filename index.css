@@ -395,7 +395,7 @@ ul.main-box {
 }
 /* EDIT PRODUCT DESKTOP */
 .product {
-  background: #eeeded1e;
+  background: #ffffff;
   padding: 40px clamp(10px, 4vw, 48px);
   display: flex;
   justify-content: center;
@@ -425,11 +425,10 @@ body{
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(240, 240, 240, 0.432);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(25px);
   border-radius: 20px;
   z-index: 0;
-  /* transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s ease,background .35s ease; */
 }
 
 .hero h3 {
@@ -454,6 +453,7 @@ body{
   position: relative;
   width: 100%;
   height: 500px;
+  padding: 30px 0;
 }
 
 .item {
@@ -464,9 +464,14 @@ body{
   height: 500px;
   background-size: cover;
   transform-origin: center center;
-  transition: transform .6s cubic-bezier(.4, 0, .2, 1), opacity .6s ease;
+  transition: transform .6s cubic-bezier(.4, 0, .2, 1), opacity .6s, easebox-shadow .3s ease, border-color .3s ease;
   opacity: 0;
   border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.item:hover {border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .item.pos-1 {transform:translateX(-50%)translateX(clamp(-470px, -28vw, -180px))scale(clamp(.75, 1, 1));
@@ -496,32 +501,45 @@ body{
     background: #ffffff;
     box-shadow: none;
     border-radius: 0 0 10px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.514);
   }
 
 .buttonNP {
   position: absolute;
   bottom: 45%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(10px);
   display: flex;
   gap: 100rem;
   z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.hero:hover .buttonNP {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 .buttonNP button {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: none;
-  background: #fff;
-  font-size: 22px;
+  background-color: #fff;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
-  transition:transform .15s ease,box-shadow .15s ease;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+  font-size: 0; 
 }
+
+#prev {background-image: url("images/arrows-left.png");}
+#next {background-image: url("images/arrows-right.png");}
 /* เมาส์ชี้ */
-.buttonNP button:hover {
-  transform: translateY(-2px);
+.buttonNP button:hover {transform: translateY(-2px);
   box-shadow: 0 14px 26px rgba(0, 0, 0, .25);
 }
 /* กดปุ่ม → ยุบลง */
