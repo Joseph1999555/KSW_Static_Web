@@ -403,7 +403,7 @@ ul.main-box {
 
 .very-hero h2 {
   text-align: center;
-  color: #575757;
+  color: #333;
   font-size: clamp(14px, 3vw, 30px);
   margin-bottom: 20px;
   position: relative;
@@ -432,11 +432,9 @@ body{
   /* transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s ease,background .35s ease; */
 }
 
-
 .hero h3 {
   text-align: center;
   color: #333;
-  font-size: clamp(14px, 3vw, 30px);
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
@@ -455,15 +453,15 @@ body{
 .slider-track {
   position: relative;
   width: 100%;
-  height: 360px;
+  height: 500px;
 }
 
 .item {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 300px;
-  height: 350px;
+  width: 450px;
+  height: 500px;
   background-size: cover;
   transform-origin: center center;
   transition: transform .6s cubic-bezier(.4, 0, .2, 1), opacity .6s ease;
@@ -471,7 +469,7 @@ body{
   border-radius: 10px;
 }
 
-.item.pos-1 {transform:translateX(-50%)translateX(clamp(-300px, -28vw, -180px))scale(clamp(.75, .85, .9));
+.item.pos-1 {transform:translateX(-50%)translateX(clamp(-470px, -28vw, -180px))scale(clamp(.75, 1, 1));
   opacity: 1;
   z-index: 1;
 }
@@ -481,7 +479,7 @@ body{
   z-index: 3;
 }
 
-.item.pos-3 {transform:translateX(-50%)translateX(clamp(260px, 28vw, 300px))scale(clamp(.75, .85, .9));
+.item.pos-3 {transform:translateX(-50%)translateX(clamp(470px, 28vw, 300px))scale(clamp(.75, 1, 1));
   opacity: 1;
   z-index: 1;
 }
@@ -500,17 +498,13 @@ body{
     border-radius: 0 0 10px 10px;
   }
 
-.content h3 {font-size: 16px;}
-
-.content p {font-size: 10px;}
-
 .buttonNP {
   position: absolute;
   bottom: 45%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 58rem;
+  gap: 100rem;
   z-index: 2;
 }
 
@@ -565,7 +559,7 @@ body{
   .item .content h3 {
     font-size: 14px;
     margin-bottom: 1px;
-    color: #000;
+    color: #333;
   }
 
   .item .content p {
@@ -613,16 +607,12 @@ body{
     inset: auto;
     width: 100%;
     max-height: none;
-    padding: 16px;
+    padding: 20px;
     background: rgb(255, 255, 255);
   }
 
-  .item .content h1 {font-size: 16px;}
-  .item .content p {
-    font-size: 14px;
-    line-height: 1.45;
-    margin-bottom: 12px;
-}
+  .item .content h3 {font-size: 25px;}
+  .item .content p {font-size: 16px;line-height: 1.45;margin-bottom: 12px;}
 }
 
 /* spinner */
