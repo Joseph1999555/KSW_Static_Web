@@ -22,7 +22,7 @@
 }
 
 .site-banner.bg-product {
-  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/product_background_01.png") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/KSW02.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-order {
@@ -34,7 +34,7 @@
 }
 
 .site-banner.bg-about {
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/about_background_02.png") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/KSW01.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-contact {
