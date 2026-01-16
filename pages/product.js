@@ -2,27 +2,31 @@ let sliderInitialized = false;
 
 function waitForSliderInit() {
   const observer = new MutationObserver(() => {
-    const track = document.querySelector('.slider-track');
-    const next = document.getElementById('next');
-    const prev = document.getElementById('prev');
-    const items = document.querySelectorAll('.item');
+    document.querySelectorAll('.product').forEach(section => {
+      const track = section.querySelector('.slider-track');
+      const items = section.querySelectorAll('.item');
 
-    if (!track || items.length < 3) return;
+      // ❗ ไม่เช็คปุ่มอีกต่อไป
+      if (!track || items.length < 3) return;
 
-    if (!sliderInitialized) {
-      sliderInitialized = true;
-      initSlider();
-    }
+      if (track.dataset.initialized === 'true') return;
+
+      track.dataset.initialized = 'true';
+      initSlider(section);
+    });
   });
 
-  observer.observe(document.body, { childList: true, subtree: true });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 }
 
-function initSlider() {
-  const items = Array.from(document.querySelectorAll('.item'));
+function initSlider(section) {
+  const items = Array.from(section.querySelectorAll('.item'));
   const total = items.length;
 
-  let current = 1; // pos-2 อยู่กลาง
+  let current = 1;
   let isAnimating = false;
 
   function render() {
@@ -55,20 +59,19 @@ function initSlider() {
     setTimeout(() => (isAnimating = false), 600);
   }
 
-  // ===== Desktop buttons =====
-  const nextBtn = document.getElementById('next');
-  const prevBtn = document.getElementById('prev');
+  /* ❗ ไม่มีปุ่มก็ไม่เป็นไร */
+  const nextBtn = section.querySelector('#next');
+  const prevBtn = section.querySelector('#prev');
 
-  if (nextBtn && prevBtn) {
-    nextBtn.onclick = next;
-    prevBtn.onclick = prev;
-  }
+  if (nextBtn) nextBtn.onclick = next;
+  if (prevBtn) prevBtn.onclick = prev;
 
-  // ===== Mobile swipe =====
+  /* ✅ swipe ทำงานจริง */
   enableMobileSwipe({
     items,
     next,
-    prev
+    prev,
+    slider: section.querySelector('.slider-track')
   });
 
   render();
@@ -77,69 +80,41 @@ function initSlider() {
 /* ===============================
    MOBILE SWIPE (FOLLOW FINGER)
 ================================ */
-function enableMobileSwipe({ items, next, prev }) {
+function enableMobileSwipe({ items, next, prev, slider }) {
+  if (!slider) return;
+
+  slider.style.touchAction = 'pan-y';
+
   let startX = 0;
   let currentX = 0;
-  let startTime = 0;
   let dragging = false;
 
-  const DISTANCE_THRESHOLD = 5; // ต้องลากไกลจริง
-  const TIME_THRESHOLD = 50;     // ms ป้องกัน flick เร็ว
-  // const DAMPING = 0.1;            // แรงต้าน (ยิ่งน้อยยิ่งหนืด)
-
-  const slider = document.querySelector('.slider');
-  if (!slider) return;
+  const DISTANCE_THRESHOLD = 25;
 
   slider.addEventListener('touchstart', e => {
     if (window.innerWidth > 768) return;
 
     startX = e.touches[0].clientX;
     currentX = startX;
-    startTime = Date.now();
     dragging = true;
-
-    items.forEach(item => {
-      item.style.transition = 'none';
-    });
   }, { passive: true });
 
   slider.addEventListener('touchmove', e => {
     if (!dragging || window.innerWidth > 768) return;
 
     currentX = e.touches[0].clientX;
-    const deltaX = (currentX - startX) * DAMPING;
-
-    items.forEach(item => {
-      item.style.transform =
-        item.style.transform.replace(/translateX\([^)]+\)/g, '') +
-        ` translateX(${deltaX}px)`;
-    });
   }, { passive: true });
 
   slider.addEventListener('touchend', () => {
     if (!dragging || window.innerWidth > 768) return;
 
     const distance = currentX - startX;
-    const elapsed = Date.now() - startTime;
 
-    items.forEach(item => {
-      item.style.transition =
-        'transform .6s cubic-bezier(.4,0,.2,1), opacity .6s ease';
-      item.style.transform = '';
-    });
-
-    if (
-      Math.abs(distance) > DISTANCE_THRESHOLD &&
-      elapsed > TIME_THRESHOLD
-    ) {
-      if (distance < 0) next();
-      else prev();
+    if (Math.abs(distance) > DISTANCE_THRESHOLD) {
+      distance < 0 ? next() : prev();
     }
 
     dragging = false;
-    startX = 0;
-    currentX = 0;
-    startTime = 0;
   });
 }
 

@@ -397,58 +397,55 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
-
-/* EDIT PRODUCT DESKTOP */
+/* ===============================
+   BASE / DESKTOP (DEFAULT)
+================================ */
+/* PRODUCT WRAPPER */
 .product {
-  background: #eeeded1e;
-  padding: 40px clamp(10px, 4vw, 48px);
-  display: flex;
+  background: #ffffff;
+  padding: 10px clamp(10px, 4vw, 48px);
   justify-content: center;
 }
 
+/* HEADINGS */
 .very-hero h2 {
   text-align: center;
-  color: #575757;
-  font-size: clamp(10px, 3vw, 30px);
-  margin-bottom: 10px;
+  color: #333;
+  font-size: clamp(10px, 3vw, 40px);
+  margin-bottom: 20px;
   position: relative;
   z-index: 1;
 }
 
+.hero h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* HERO */
 .hero {
   position: relative;
-  width: auto;
-  max-width: 1100px;
-  padding: 10px 16px 80px;
+  width: 100%;
+  max-width: 2500px;
+  padding: 2px 20px 10px;
   border-radius: 28px;
+  margin: 0 auto;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(240, 240, 240, 0.432);
-  backdrop-filter: blur(18px);
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(25px);
   border-radius: 20px;
   z-index: 0;
-  transition: transform .35s cubic-bezier(.4, 0, .2, 1), box-shadow .35s ease, background .35s ease;
 }
 
-.hero:hover::after {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, .18), inset 0 1px 0 rgba(255, 255, 255, .6);
-  background: rgba(245, 245, 245, 0.55);
-}
-
-.hero h1 {
-  text-align: center;
-  color: #575757;
-  font-size: clamp(18px, 3vw, 30px);
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-}
-
+/* SLIDER */
 .slider {
   position: relative;
   display: flex;
@@ -462,36 +459,56 @@ ul.main-box {
 .slider-track {
   position: relative;
   width: 100%;
-  height: 360px;
+  height: 700px;
+  padding: 20px 0;
 }
 
+/* ITEM (CARD) */
 .item {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 300px;
+  width: 550px;
   height: 350px;
-  background-size: cover;
-  transform-origin: center center;
-  transition: transform .6s cubic-bezier(.4, 0, .2, 1), opacity .6s ease;
-  opacity: 0;
+  padding-top: 350px;
+  display: flex;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center top;
   border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    transform .6s cubic-bezier(.4,0,.2,1),
+    opacity .6s ease,
+    box-shadow .3s ease;
 }
 
+.item:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* ITEM POSITIONS */
 .item.pos-1 {
-  transform: translateX(-50%)translateX(clamp(-300px, -28vw, -180px))scale(clamp(.75, .85, .9));
+  transform: translateX(-50%)
+             translateX(clamp(-580px, -28vw, -180px))
+             scale(1);
   opacity: 1;
   z-index: 1;
 }
 
 .item.pos-2 {
-  transform: translateX(-50%)scale(clamp(.85, 1, 1));
+  transform: translateX(-50%) scale(1);
   opacity: 1;
   z-index: 3;
 }
 
 .item.pos-3 {
-  transform: translateX(-50%)translateX(clamp(260px, 28vw, 300px))scale(clamp(.75, .85, .9));
+  transform: translateX(-50%)
+             translateX(clamp(580px, 28vw, 300px))
+             scale(1);
   opacity: 1;
   z-index: 1;
 }
@@ -501,168 +518,180 @@ ul.main-box {
   opacity: 0;
 }
 
-.content {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  max-height: 45%;
+/* ITEM CONTENT */
+.item .content {
+  width: 92.5%;
+  padding: 20px;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.199);
+  border-radius: 0px;
 }
 
-.content h3 {
-  font-size: 18px;
+.item .content h3 {
+  font-size: 30px;
 }
 
-.content p {
-  font-size: 14px;
+.item .content p {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 5px;
 }
 
+/* BUTTONS */
 .buttonNP {
   position: absolute;
   bottom: 45%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(10px);
   display: flex;
-  gap: 58rem;
+  gap: 110rem;
   z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.hero:hover .buttonNP {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 .buttonNP button {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: none;
-  background: #fff;
-  font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
-  transition: transform .15s ease, box-shadow .15s ease;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
 }
 
-/* เมาส์ชี้ */
+#prev { background-image: url("images/arrows-left.png"); }
+#next { background-image: url("images/arrows-right.png"); }
+
 .buttonNP button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(0, 0, 0, .25);
+  box-shadow: 0 14px 26px rgba(0,0,0,.25);
 }
 
-/* กดปุ่ม → ยุบลง */
 .buttonNP button:active {
   transform: translateY(2px) scale(.95);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+  box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
-/* MOBILE VIEW */
+/* ===============================
+   MOBILE VIEW (STACK IMAGE + CONTENT)
+================================ */
 @media (max-width: 768px) {
+
   .product {
     overflow-x: hidden;
+    padding-bottom: 0;
   }
 
-  .item {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 250px;
-    height: auto;
-    transform-origin: center;
-    border-radius: 16px;
+  .product h2 {
+    font-size: 25px;
+  }
+
+  .hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .slider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     overflow: visible;
-    background-size: cover;
-    background-position: top;
-    padding-top: 200px;
   }
 
-  .item .content {
-    inset: auto;
-    margin: -30px 0 0;
-    background: #ffffff;
-    padding: 16px;
-    max-height: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+  .slider-track {
+    position: relative;
+    width: 100%;
+    height: 500px; /* เผื่อ item + content */
+    display: flex;
+    justify-content: center;
   }
 
-  .item .content h1 {
-    font-size: 16px;
-    margin-bottom: 6px;
-    color: #000;
+  /* ================= ITEM ================= */
+  .item {
+    width: 300px;
+    height: auto;              /* 🔴 สำคัญ */
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;    /* 🔴 เรียงบน → ล่าง */
+    align-items: center;
+    position: absolute;
   }
 
-  .item .content p {
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 14px;
-    color: #333;
+  /* ---------- IMAGE PART ---------- */
+  .item::before {
+    content: "";
+    width: 100%;
+    height: 0px;             /* พื้นที่ภาพ */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: visible;
   }
 
-  .item .content button {
-    display: inline-block;
-    padding: 8px 14px;
-    font-size: 13px;
-    border-radius: 8px;
-  }
-
+  /* ---------- POSITION ---------- */
   .item.pos-1 {
-    transform: translateX(-50%) translateX(-25%) scale(.85);
+    transform: translateX(-110%) scale(.85);
     opacity: .4;
   }
 
   .item.pos-2 {
-    transform: translateX(-50%) scale(1);
+    transform: translateX(-55%) scale(1);
     opacity: 1;
-    z-index: 3;
   }
 
   .item.pos-3 {
-    transform: translateX(-50%) translateX(25%) scale(.85);
+    transform: translateX(10%) scale(.85);
     opacity: .4;
+  }
+
+  /* ================= CONTENT ================= */
+  .item .content {
+    width: 268px;
+    margin-top: -20px;   /* ชิดภาพนิดหน่อย */
+    background: #fff;
+    padding: 10px 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  }
+
+  .item .content h3 {
+    font-size: 25px;
+    margin-bottom: 4px;
+  }
+
+  .item .content p {
+    font-size: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .buttonNP {
     display: none;
   }
-
-  .hero {
-    padding: 10px 100px;
-  }
-
-  .slider {
-    overflow: visible;
-  }
 }
 
-/* DESKTOP VIEW */
-@media (min-width: 1024px) {
-  .product {
-    display: block;
-  }
-
-  .hero {
-    margin: 0 auto;
-  }
-
-  .item {
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .item .content {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    max-height: none;
-    padding: 16px;
-    background: rgb(255, 255, 255);
-  }
-
-  .item .content h1 {
-    font-size: 16px;
-  }
-
-  .item .content p {
-    font-size: 14px;
-    line-height: 1.45;
-    margin-bottom: 12px;
-  }
+/* spinner */
+/* LOADING OVERLAY */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
 /* ซ่อนไว้ก่อน */
@@ -724,7 +753,6 @@ ul.main-box {
   gap: 24px;
 }
 
-/* SK-CARD */
 .sk-card {
   height: 280px;
   border-radius: 16px;
