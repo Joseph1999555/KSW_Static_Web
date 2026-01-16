@@ -5,10 +5,9 @@ function waitForSliderInit() {
     document.querySelectorAll('.product').forEach(section => {
       const track = section.querySelector('.slider-track');
       const items = section.querySelectorAll('.item');
-      const nextBtn = section.querySelector('#next');
-      const prevBtn = section.querySelector('#prev');
 
-      if (!track || items.length < 3 || !nextBtn || !prevBtn) return;
+      // ❗ ไม่เช็คปุ่มอีกต่อไป
+      if (!track || items.length < 3) return;
 
       if (track.dataset.initialized === 'true') return;
 
@@ -60,78 +59,63 @@ function initSlider(section) {
     setTimeout(() => (isAnimating = false), 600);
   }
 
-  section.querySelector('#next').onclick = next;
-  section.querySelector('#prev').onclick = prev;
+  /* ❗ ไม่มีปุ่มก็ไม่เป็นไร */
+  const nextBtn = section.querySelector('#next');
+  const prevBtn = section.querySelector('#prev');
 
+  if (nextBtn) nextBtn.onclick = next;
+  if (prevBtn) prevBtn.onclick = prev;
+
+  /* ✅ swipe ทำงานจริง */
   enableMobileSwipe({
     items,
     next,
     prev,
-    slider: section.querySelector('.slider')
+    slider: section.querySelector('.slider-track')
   });
 
   render();
 }
+
 /* ===============================
    MOBILE SWIPE (FOLLOW FINGER)
 ================================ */
 function enableMobileSwipe({ items, next, prev, slider }) {
   if (!slider) return;
 
+  slider.style.touchAction = 'pan-y';
+
   let startX = 0;
   let currentX = 0;
-  let startTime = 0;
   let dragging = false;
 
-  const DISTANCE_THRESHOLD = 30;
-  const TIME_THRESHOLD = 50;
+  const DISTANCE_THRESHOLD = 25;
 
   slider.addEventListener('touchstart', e => {
     if (window.innerWidth > 768) return;
 
-    e.stopPropagation();
-
     startX = e.touches[0].clientX;
     currentX = startX;
-    startTime = Date.now();
     dragging = true;
-
-    items.forEach(item => {
-      item.style.transition = 'none';
-    });
-  }, { passive: false });
+  }, { passive: true });
 
   slider.addEventListener('touchmove', e => {
     if (!dragging || window.innerWidth > 768) return;
 
-    e.preventDefault();   // ❗ สำคัญ
-    e.stopPropagation();
-
     currentX = e.touches[0].clientX;
-  }, { passive: false });
+  }, { passive: true });
 
-  slider.addEventListener('touchend', e => {
+  slider.addEventListener('touchend', () => {
     if (!dragging || window.innerWidth > 768) return;
 
-    e.stopPropagation();
-
     const distance = currentX - startX;
-    const elapsed = Date.now() - startTime;
 
-    items.forEach(item => {
-      item.style.transition =
-        'transform .6s cubic-bezier(.4,0,.2,1), opacity .6s ease';
-      item.style.transform = '';
-    });
-
-    if (Math.abs(distance) > DISTANCE_THRESHOLD && elapsed > TIME_THRESHOLD) {
+    if (Math.abs(distance) > DISTANCE_THRESHOLD) {
       distance < 0 ? next() : prev();
     }
 
     dragging = false;
-    startX = 0;
-    currentX = 0;
-    startTime = 0;
   });
 }
+
 waitForSliderInit();
