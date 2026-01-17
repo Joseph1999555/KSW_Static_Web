@@ -106,9 +106,10 @@ h4 {
 
 #app {
   flex: 1;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
+ /* ซ่อนข้อความที่ต้องการ */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -121,27 +122,18 @@ h4 {
   border: 0;
 }
 
+.section-title {
+  font-size: clamp(20px, 4vw, 30px);
+  margin-bottom: 12px;
+  color: #333333;
+  text-align: center;
+  margin-top: 0;
+}
+
 /* Main Section */
 .main {
   padding: 60px 20px;
   text-align: center;
-}
-
-.main>h1 {
-  font-size: clamp(22px, 4vw, 32px);
-  margin: 0 auto 12px;
-  max-width: 720px;
-  width: 100%;
-  text-align: center;
-  padding: 0;
-}
-
-.main>h2 {
-  font-size: 24px;
-  font-weight: normal;
-  max-width: 900px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
 }
 
 /* กล่องรวม 4 อัน */
@@ -178,11 +170,6 @@ ul.main-box {
   color: #00AEEF;
 }
 
-.main-item h2 {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
 /* หัวข้อในการ์ด */
 .main-item h3 {
   font-size: 24px;
@@ -194,7 +181,7 @@ ul.main-box {
 .main-item p {
   font-size: 20px;
   line-height: 1.6;
-  color: #555;
+  color: #333333;
 }
 
 @media (max-width: 1024px) {
@@ -226,14 +213,18 @@ ul.main-box {
   /* align-items: center; */
 }
 
+.about-image {
+  padding: 10px;
+}
+
 .about-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.4s ease;
-  cursor: zoom-in;
+  /* cursor: zoom-in; */
 }
 
 /* HOVERRRRRRRRR */
@@ -269,7 +260,6 @@ ul.main-box {
   width: auto;
 }
 
-.about-content h2,
 .about-content h3 {
   margin-top: 0;
 }
@@ -870,12 +860,6 @@ ul.main-box {
   cursor: pointer;
 }
 
-.overview-item h2 {
-  font-size: 20px;
-  margin: 15px 0 10px;
-  color: #fff100;
-}
-
 .overview-item h3 {
   font-size: 20px;
   font-weight: 400;
@@ -905,22 +889,8 @@ ul.main-box {
   background-color: #f9f9f9;
 }
 
-.service h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  color: #333333;
-}
-
-.service h2 {
-  font-size: 1.2em;
-  color: #00AEEF;
-  margin-bottom: 0;
-  margin-top: 10px;
-}
-
 .section-subtitle {
-  font-size: 2em;
+  font-size: 20px;
   color: #666666;
   margin-top: 0;
   margin-bottom: 30px;
@@ -955,16 +925,9 @@ ul.service-box {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.service-item:hover h2,
 .service-item:hover h3,
 .service-item:hover p {
   color: #00AEEF;
-}
-
-.service-item h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: #333333;
 }
 
 .service-item h3 {
