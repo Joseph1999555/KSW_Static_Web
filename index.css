@@ -100,6 +100,10 @@ h6 {
   font-family: var(--font-heading);
 }
 
+h4 {
+  font-family: var(--font-body);
+}
+
 #app {
   flex: 1;
   min-height: 60vh;
@@ -223,6 +227,7 @@ ul.main-box {
   /* cursor: zoom-in; */
 }
 
+/* HOVERRRRRRRRR */
 .about-image img:hover {
   transform: scale(1.03);
 }
@@ -397,6 +402,7 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
+
 /* ===============================
    BASE / DESKTOP (DEFAULT)
 ================================ */
@@ -477,24 +483,22 @@ ul.main-box {
   background-position: center top;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
   transform-origin: center;
   opacity: 0;
   transition:
-    transform .6s cubic-bezier(.4,0,.2,1),
+    transform .6s cubic-bezier(.4, 0, .2, 1),
     opacity .6s ease,
     box-shadow .3s ease;
 }
 
 .item:hover {
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
 }
 
 /* ITEM POSITIONS */
 .item.pos-1 {
-  transform: translateX(-50%)
-             translateX(clamp(-580px, -28vw, -180px))
-             scale(1);
+  transform: translateX(-50%) translateX(clamp(-580px, -28vw, -180px)) scale(1);
   opacity: 1;
   z-index: 1;
 }
@@ -506,9 +510,7 @@ ul.main-box {
 }
 
 .item.pos-3 {
-  transform: translateX(-50%)
-             translateX(clamp(580px, 28vw, 300px))
-             scale(1);
+  transform: translateX(-50%) translateX(clamp(580px, 28vw, 300px)) scale(1);
   opacity: 1;
   z-index: 1;
 }
@@ -569,17 +571,22 @@ ul.main-box {
   background-size: 50px;
 }
 
-#prev { background-image: url("images/arrows-left.png"); }
-#next { background-image: url("images/arrows-right.png"); }
+#prev {
+  background-image: url("images/arrows-left.png");
+}
+
+#next {
+  background-image: url("images/arrows-right.png");
+}
 
 .buttonNP button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(0,0,0,.25);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, .25);
 }
 
 .buttonNP button:active {
   transform: translateY(2px) scale(.95);
-  box-shadow: 0 6px 12px rgba(0,0,0,.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
 }
 
 /* ===============================
@@ -612,7 +619,8 @@ ul.main-box {
   .slider-track {
     position: relative;
     width: 100%;
-    height: 500px; /* เผื่อ item + content */
+    height: 500px;
+    /* เผื่อ item + content */
     display: flex;
     justify-content: center;
   }
@@ -620,10 +628,12 @@ ul.main-box {
   /* ================= ITEM ================= */
   .item {
     width: 300px;
-    height: auto;              /* 🔴 สำคัญ */
+    height: auto;
+    /* 🔴 สำคัญ */
     border-radius: 16px;
     display: flex;
-    flex-direction: column;    /* 🔴 เรียงบน → ล่าง */
+    flex-direction: column;
+    /* 🔴 เรียงบน → ล่าง */
     align-items: center;
     position: absolute;
   }
@@ -632,7 +642,8 @@ ul.main-box {
   .item::before {
     content: "";
     width: 100%;
-    height: 0px;             /* พื้นที่ภาพ */
+    height: 0px;
+    /* พื้นที่ภาพ */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -658,10 +669,11 @@ ul.main-box {
   /* ================= CONTENT ================= */
   .item .content {
     width: 268px;
-    margin-top: -20px;   /* ชิดภาพนิดหน่อย */
+    /* ชิดภาพนิดหน่อย */
+    margin-top: -20px;
     background: #fff;
     padding: 10px 14px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
   }
 
   .item .content h3 {
@@ -907,8 +919,6 @@ ul.service-box {
   width: 300px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-li.service-item {}
 
 .service-item:hover {
   transform: translateY(-5px);
