@@ -14,7 +14,7 @@
 
 /* per-page backgrounds */
 .site-banner.bg-home {
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/warehouse.jpg") center/cover no-repeat;
+  background: linear-gradient(160deg, #1fc4f1, #045cba);
 }
 
 .site-banner.bg-news {
@@ -174,8 +174,8 @@
 
 /* h1 ตัวล่าง */
 .hero-title {
-  margin-top: 32px;
-  font-size: 40px;
+  margin: 12px;
+  font-size: 60px;
   text-align: center;
   color: #FFF100;
 }
