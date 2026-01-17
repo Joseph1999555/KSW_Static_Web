@@ -13,6 +13,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 /* @font-face {
 font-family: "Sukhumvit Set";
 src: url("/fonts/sukhumvit-set/SukhumvitSet-Regular.ttf") format("truetype");
@@ -90,8 +91,17 @@ body {
   flex-direction: column;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
+}
+
+h4 {
+  font-family: var(--font-body);
 }
 
 #app {
@@ -110,6 +120,7 @@ h1,h2,h3,h4,h5,h6 {
   white-space: nowrap;
   border: 0;
 }
+
 /* Main Section */
 .main {
   padding: 60px 20px;
@@ -132,6 +143,7 @@ h1,h2,h3,h4,h5,h6 {
   margin: 0 auto 40px;
   line-height: 1.6;
 }
+
 /* กล่องรวม 4 อัน */
 .main-box {
   list-style: none;
@@ -143,6 +155,7 @@ h1,h2,h3,h4,h5,h6 {
 ul.main-box {
   padding: 0;
 }
+
 /* กล่องแต่ละอัน */
 .main-item {
   background: #f7f7f7;
@@ -150,6 +163,7 @@ ul.main-box {
   border-radius: 12px;
   text-align: center;
 }
+
 /* โลโก้ */
 .main-item .logo {
   display: flex;
@@ -168,12 +182,14 @@ ul.main-box {
   font-size: 24px;
   margin-bottom: 8px;
 }
+
 /* หัวข้อในการ์ด */
 .main-item h3 {
   font-size: 24px;
   font-weight: normal;
   line-height: 1.6;
 }
+
 /* เนื้อหา */
 .main-item p {
   font-size: 20px;
@@ -192,6 +208,7 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
+
 /* About Section */
 .about {
   padding: 60px 20px;
@@ -202,7 +219,7 @@ ul.main-box {
 .about-box {
   max-width: 1500px;
   margin: auto;
-  padding:  0 20px;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -218,6 +235,7 @@ ul.main-box {
   transition: transform 0.4s ease;
   cursor: zoom-in;
 }
+
 /* HOVERRRRRRRRR */
 .about-image img:hover {
   transform: scale(1.03);
@@ -295,6 +313,7 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
+
 /* Contact Section */
 .contact {
   padding: 60px 20px;
@@ -306,7 +325,7 @@ ul.main-box {
   max-width: 2000px;
   gap: 24px;
   margin: auto;
-  padding:  0 20px;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -393,6 +412,7 @@ ul.main-box {
     grid-template-columns: 1fr;
   }
 }
+
 /* ===============================
    BASE / DESKTOP (DEFAULT)
 ================================ */
@@ -473,24 +493,22 @@ ul.main-box {
   background-position: center top;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
   transform-origin: center;
   opacity: 0;
   transition:
-    transform .6s cubic-bezier(.4,0,.2,1),
+    transform .6s cubic-bezier(.4, 0, .2, 1),
     opacity .6s ease,
     box-shadow .3s ease;
 }
 
 .item:hover {
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
 }
 
 /* ITEM POSITIONS */
 .item.pos-1 {
-  transform: translateX(-50%)
-             translateX(clamp(-580px, -28vw, -180px))
-             scale(1);
+  transform: translateX(-50%) translateX(clamp(-580px, -28vw, -180px)) scale(1);
   opacity: 1;
   z-index: 1;
 }
@@ -502,9 +520,7 @@ ul.main-box {
 }
 
 .item.pos-3 {
-  transform: translateX(-50%)
-             translateX(clamp(580px, 28vw, 300px))
-             scale(1);
+  transform: translateX(-50%) translateX(clamp(580px, 28vw, 300px)) scale(1);
   opacity: 1;
   z-index: 1;
 }
@@ -565,17 +581,22 @@ ul.main-box {
   background-size: 50px;
 }
 
-#prev { background-image: url("images/arrows-left.png"); }
-#next { background-image: url("images/arrows-right.png"); }
+#prev {
+  background-image: url("images/arrows-left.png");
+}
+
+#next {
+  background-image: url("images/arrows-right.png");
+}
 
 .buttonNP button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(0,0,0,.25);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, .25);
 }
 
 .buttonNP button:active {
   transform: translateY(2px) scale(.95);
-  box-shadow: 0 6px 12px rgba(0,0,0,.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
 }
 
 /* ===============================
@@ -608,7 +629,8 @@ ul.main-box {
   .slider-track {
     position: relative;
     width: 100%;
-    height: 500px; /* เผื่อ item + content */
+    height: 500px;
+    /* เผื่อ item + content */
     display: flex;
     justify-content: center;
   }
@@ -616,10 +638,12 @@ ul.main-box {
   /* ================= ITEM ================= */
   .item {
     width: 300px;
-    height: auto;              /* 🔴 สำคัญ */
+    height: auto;
+    /* 🔴 สำคัญ */
     border-radius: 16px;
     display: flex;
-    flex-direction: column;    /* 🔴 เรียงบน → ล่าง */
+    flex-direction: column;
+    /* 🔴 เรียงบน → ล่าง */
     align-items: center;
     position: absolute;
   }
@@ -628,7 +652,8 @@ ul.main-box {
   .item::before {
     content: "";
     width: 100%;
-    height: 0px;             /* พื้นที่ภาพ */
+    height: 0px;
+    /* พื้นที่ภาพ */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -654,10 +679,11 @@ ul.main-box {
   /* ================= CONTENT ================= */
   .item .content {
     width: 268px;
-    margin-top: -20px;   /* ชิดภาพนิดหน่อย */
+    /* ชิดภาพนิดหน่อย */
+    margin-top: -20px;
     background: #fff;
     padding: 10px 14px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
   }
 
   .item .content h3 {
