@@ -882,6 +882,60 @@ ul.main-box {
   color: #00AEEF;
 }
 
+/* social media section */
+.social-media {
+  padding: 40px 20px;
+  min-height: 15vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("images/img1.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;      /* กลางแนวตั้ง */
+  justify-content: center;  /* กลางแนวนอน */
+}
+
+.social-media-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.social-media-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 220px;
+  max-width: 250px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-media-item:hover {
+  transform: translateY(-6px) scale(1.05);
+  filter: brightness(1.1);
+}
+
+.social-media-icon {
+  width: 90px;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 600px) {
+  .social-media-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .social-media-item {
+    max-width: none;
+  }
+}
+
+
 /* service section  */
 .service {
   padding: 40px;
