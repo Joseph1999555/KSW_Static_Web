@@ -5,11 +5,15 @@
 }
 
 .site-banner {
+  display: flex;
   text-align: center;
+  justify-content: center; /* กลางแนวนอน */
+  align-items: center;     /* กลางแนวตั้ง */
   margin-top: 0px;
   padding: 3%;
   background: #000033;
   transition: background 300ms ease;
+  min-height: clamp(100px, 30vh, 400px);
 }
 
 /* per-page backgrounds */
@@ -49,7 +53,7 @@
 .logo {
   margin: 0;
   color: #00AEEF;
-  font-size: 40px;
+  font-size: clamp(20px, 6vw, 40px);
   font-family: var(--font-heading);
   font-weight: bold;
 }
@@ -209,7 +213,10 @@
 /* h1 ตัวล่าง */
 .hero-title {
   margin: 12px;
-  font-size: 50px;
+  font-size: clamp(20px, 6vw, 60px);
   text-align: center;
   color: #FFF100;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
