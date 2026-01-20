@@ -909,18 +909,19 @@ ul.main-box {
   flex: 1 1 220px;
   max-width: 250px;
   cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-media-item:hover {
-  transform: translateY(-6px) scale(1.05);
-  filter: brightness(1.1);
 }
 
 .social-media-icon {
   width: 90px;
   height: auto;
   border-radius: 12px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+.social-media-icon:hover {
+  transform: translateY(-6px) scale(1.05);
+  filter: brightness(1.1);
 }
 
 @media (max-width: 600px) {
