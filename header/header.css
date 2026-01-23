@@ -5,16 +5,20 @@
 }
 
 .site-banner {
+  display: flex;
   text-align: center;
+  justify-content: center; /* กลางแนวนอน */
+  align-items: center;     /* กลางแนวตั้ง */
   margin-top: 0px;
   padding: 3%;
   background: #000033;
   transition: background 300ms ease;
+  min-height: clamp(100px, 30vh, 400px);
 }
 
 /* per-page backgrounds */
 .site-banner.bg-home {
-  background: linear-gradient(160deg, #1fc4f1, #045cba);
+  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/KSW01.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-news {
@@ -34,11 +38,11 @@
 }
 
 .site-banner.bg-about {
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/KSW01.webp") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/KSW03.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-contact {
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/contact_background_01.png") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/contact_background_01.png") center/cover no-repeat;
 }
 
 .header-top {
@@ -49,7 +53,7 @@
 .logo {
   margin: 0;
   color: #00AEEF;
-  font-size: 40px;
+  font-size: clamp(20px, 6vw, 40px);
   font-family: var(--font-heading);
   font-weight: bold;
 }
@@ -209,7 +213,10 @@
 /* h1 ตัวล่าง */
 .hero-title {
   margin: 12px;
-  font-size: 60px;
+  font-size: clamp(20px, 6vw, 60px);
   text-align: center;
   color: #FFF100;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
