@@ -130,26 +130,26 @@ h4 {
   margin-top: 0;
 }
 
-/* Main Section */
-.main {
+/* value Section */
+.value {
   padding: 60px 20px;
   text-align: center;
 }
 
 /* กล่องรวม 4 อัน */
-.main-box {
+.value-box {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
-ul.main-box {
+ul.value-box {
   padding: 0;
 }
 
 /* กล่องแต่ละอัน */
-.main-item {
+.value-item {
   background: #f7f7f7;
   padding: 24px;
   border-radius: 12px;
@@ -157,41 +157,41 @@ ul.main-box {
 }
 
 /* โลโก้ */
-.main-item .logo {
+.value-item .logo {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 16px;
 }
 
-.main-item .logo img {
+.value-item .logo img {
   width: 64px;
   height: auto;
   color: #00AEEF;
 }
 
 /* หัวข้อในการ์ด */
-.main-item h3 {
+.value-item h3 {
   font-size: 24px;
   font-weight: normal;
   line-height: 1.6;
 }
 
 /* เนื้อหา */
-.main-item p {
+.value-item p {
   font-size: 20px;
   line-height: 1.6;
   color: #333333;
 }
 
 @media (max-width: 1024px) {
-  .main-box {
+  .value-box {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 1000px) {
-  .main-box {
+  .value-box {
     grid-template-columns: 1fr;
   }
 }
@@ -546,7 +546,7 @@ ul.main-box {
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   display: flex;
-  gap: 110rem;
+  gap: 85vw;
   z-index: 2;
   opacity: 0;
   pointer-events: none;
@@ -1001,3 +1001,109 @@ ul.service-box {
   color: #555555;
   line-height: 1.4;
 }
+
+/* ----------------------------------------- preview product carousel ---------------------------------------------------------------------- */
+.preview-product {
+  padding: 24px;
+}
+
+.section-title {
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
+/* กรอบโชว์ 3 ใบ */
+.card-viewport {
+  max-width: calc((260px * 3) + (16px * 2));
+  margin: 0 auto;
+  overflow: hidden; /* กันล้น */
+}
+
+/* แทร็กเลื่อน */
+.card-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* ซ่อน scrollbar */
+.card-track::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ตัว card */
+.product-card {
+  flex: 0 0 260px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+
+  scroll-snap-align: start;
+}
+
+/* รูป */
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ข้อความ */
+.card-body {
+  padding: 12px;
+}
+
+.card-body h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.card-body p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .card-track {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+.card-wrapper {
+  position: relative;
+}
+
+.scroll-indicator {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.scroll-indicator .dot {
+  width: 28px;
+  height: 4px;
+  background: #bbb;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 200ms ease;
+}
+
+.scroll-indicator .dot.active {
+  background: #000;
+}
+
+.clone {
+  pointer-events: none;
+}
+
+
