@@ -74,6 +74,13 @@
   color: #0099CC;
 }
 
+.logo img {
+  height: clamp(20px, 8vw, 40px);
+  width: auto;
+  vertical-align: middle;
+  padding: 20px;
+}
+
 .main-nav {
   margin-left: auto;
   display: flex;
