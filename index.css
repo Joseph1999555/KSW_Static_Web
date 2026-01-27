@@ -132,7 +132,7 @@ h4 {
 
 /* value Section */
 .value {
-  padding: 60px 20px;
+  padding: 30px 20px;
   text-align: center;
 }
 
@@ -140,8 +140,11 @@ h4 {
 .value-box {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+  max-width: clamp(320px, 90vw, 1400px);
+  margin: 0 auto;
+  padding: 0;
 }
 
 ul.value-box {
@@ -151,7 +154,7 @@ ul.value-box {
 /* กล่องแต่ละอัน */
 .value-item {
   background: #f7f7f7;
-  padding: 24px;
+  padding: clamp(10px, 3vw, 24px);
   border-radius: 12px;
   text-align: center;
 }
@@ -161,38 +164,32 @@ ul.value-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 }
 
 .value-item .logo img {
-  width: 64px;
+  width: clamp(24px, 10vw, 100px);
   height: auto;
   color: #00AEEF;
 }
 
 /* หัวข้อในการ์ด */
 .value-item h3 {
-  font-size: 24px;
-  font-weight: normal;
-  line-height: 1.6;
+  font-size: clamp(8px, 2vw, 22px);
+  font-weight: 500;
+  margin: 0 ;
 }
 
 /* เนื้อหา */
 .value-item p {
-  font-size: 20px;
+  font-size: clamp(7px, 1.8vw, 18px);
   line-height: 1.6;
-  color: #333333;
+  color: #333;
 }
 
 @media (max-width: 1024px) {
   .value-box {
     grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 1000px) {
-  .value-box {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -854,7 +851,7 @@ ul.value-box {
   margin: 0 auto;
 
   background:
-    linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+    linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)),
     url("images/KSW03.webp") center / cover no-repeat;
 
   border-radius: 12px;
@@ -896,7 +893,7 @@ ul.value-box {
 
 @media (max-width: 1024px) {
   .overview {
-    max-width: min(85vw, 1200px); 
+    max-width: min(85vw, 1200px);
   }
 }
 
@@ -907,67 +904,55 @@ ul.value-box {
   color: #00AEEF;
 }
 
-/* social media section */
+/* =======================
+   Social Media Section
+======================= */
 .social-media {
-  padding: 40px 20px;
-  min-height: 15vh;
-  background: #f5f6fa;
-  display: flex;
-  align-items: center;
-  /* กลางแนวตั้ง */
-  justify-content: center;
-  /* กลางแนวนอน */
+  padding: 0 20px;
 }
 
+.social-media-wrapper {
+  background: #f3f3f3;
+  border-radius: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+/* หัวข้อ */
+.section-title {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 500;
+  margin-bottom: clamp(16px, 3vw, 32px);
+}
+
+/* ไอคอน */
 .social-media-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  max-width: 1200px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 4vw, 40px);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .social-media-item {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex: 1 1 220px;
-  max-width: 250px;
-  cursor: pointer;
-  padding: 10px;
+  align-items: center;
 }
 
 .social-media-icon {
-  width: clamp(50px, 8vw, 100px);
+  width: clamp(56px, 8vw, 96px);
   height: auto;
+  transition: transform .3s ease;
   border-radius: 12px;
-  transition: transform 0.3s ease, filter 0.3s ease;
-
 }
 
 .social-media-icon:hover {
-  transform: translateY(-6px) scale(1.05);
-  filter: brightness(1.1);
+  transform: scale(1.1);
 }
 
-@media (max-width: 600px) {
-  .social-media-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
 
-  }
-
-  .social-media-icon {
-    /* width: 60px; */
-  }
-
-  .social-media-item {
-    max-width: none;
-  }
-}
 
 
 /* service section  */
