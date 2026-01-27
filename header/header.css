@@ -6,6 +6,7 @@
 
 .site-banner {
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center; /* กลางแนวนอน */
   align-items: center;     /* กลางแนวตั้ง */
@@ -226,4 +227,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.hero-subtitle {
+  margin: 8px;
+  font-size: clamp(14px, 4vw, 28px);
+  text-align: center;
+  color: #FFF100;
+  max-width: 90%;
+}
+
+.hero-subtitle:empty {
+  display: none;
 }
