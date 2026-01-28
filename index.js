@@ -26,8 +26,8 @@ function getPath() {
 }
 
 window.navigate = function (path) {
-    history.pushState({}, "", path);
-    loadPage(path); // หรือฟังก์ชัน render ของมึง
+  history.pushState({}, "", path);
+  loadPage(path); // หรือฟังก์ชัน render ของมึง
 };
 
 
@@ -48,6 +48,12 @@ function loadPage() {
       setTimeout(() => {
         document.getElementById("app").innerHTML = html;
         loadIncludes();
+
+
+        if (path === "/") {
+          resetProductSystem();
+          watchProductScroll();
+        }
       }, delay);
     })
     .catch(() => {
@@ -55,6 +61,13 @@ function loadPage() {
         "<h2>โหลดไม่สำเร็จ</h2>";
     });
 }
+
+// ===== Reset Product System (ใช้ตอนโหลดหน้าใหม่) =====
+function resetProductSystem() {
+  isProductSystemInitialized = false;
+  initializedSections.clear();
+}
+
 
 
 // ดักคลิก
