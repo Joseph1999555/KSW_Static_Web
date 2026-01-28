@@ -124,7 +124,7 @@ h4 {
 
 .section-title {
   font-size: clamp(16px, 4vw, 30px);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: #333333;
   text-align: center;
   margin-top: 0;
@@ -1015,16 +1015,122 @@ ul.service-box {
 }
 
 /* ----------------------------------------- preview product carousel ---------------------------------------------------------------------- */
+/* Base styles */
 .preview-product {
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
 }
 
-/* กรอบโชว์ 3 ใบ */
+.product-category {
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.product-category:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  margin-bottom: clamp(12px, 2vw, 16px);
+  font-size: clamp(20px, 4vw, 24px);
+  text-align: center;
+}
+
+.card-wrapper {
+  position: relative;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: clamp(40px, 5vw, 48px);
+  height: clamp(40px, 5vw, 48px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn svg {
+  width: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 3vw, 24px);
+}
+
+.nav-btn:hover {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Navigation Button Positions - Responsive */
+.nav-btn-left {
+  left: clamp(8px, 2vw, 16px);
+}
+
+.nav-btn-right {
+  right: clamp(8px, 2vw, 16px);
+}
+
+/* Tablet: ขยับปุ่มออกไปอีกนิด */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-btn-left {
+    left: clamp(4px, 1vw, 8px);
+  }
+  
+  .nav-btn-right {
+    right: clamp(4px, 1vw, 8px);
+  }
+}
+
+/* Desktop Large: ปุ่มออกไปนอกเฟรม */
+@media (min-width: 1200px) {
+  .nav-btn-left {
+    left: 160px;
+  }
+  
+  .nav-btn-right {
+    right: 160px;
+  }
+}
+
+/* Desktop only */
+@media (min-width: 769px) {
+  .nav-btn {
+    display: flex;
+  }
+}
+
+/* กรอบโชว์ */
 .card-viewport {
-  max-width: calc((260px * 3) + (16px * 2));
+  max-width: calc((262px * 3) + (16px * 2));
   margin: 0 auto;
   overflow: hidden;
-  /* กันล้น */
+  padding: 4px; /* เผื่อ shadow */
+}
+
+/* Desktop: แสดง 3 cards */
+@media (min-width: 769px) {
+  .card-viewport {
+    max-width: calc((262px * 3) + (16px * 2));
+    overflow: visible;
+  }
+}
+
+/* Desktop Large: แสดง 4 cards */
+@media (min-width: 1400px) {
+  .card-viewport {
+    max-width: calc((262px * 4) + (16px * 3));
+  }
 }
 
 /* แทร็กเลื่อน */
@@ -1032,9 +1138,27 @@ ul.service-box {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+}
+
+/* Desktop: ซ่อน scroll */
+@media (min-width: 769px) {
+  .card-track {
+    overflow-x: hidden;
+  }
+}
+
+/* Mobile: scroll enabled */
+@media (max-width: 768px) {
+  .card-track {
+    scroll-snap-type: x mandatory;
+    gap: 12px; /* ลด gap ใน mobile */
+  }
+  
+  .product-card {
+    scroll-snap-align: start;
+  }
 }
 
 /* ซ่อน scrollbar */
@@ -1042,63 +1166,74 @@ ul.service-box {
   display: none;
 }
 
-
 /* ตัว card */
 .product-card {
-  flex: 0 0 260px;
+  flex: 0 0 clamp(240px, 45vw, 260px);
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-
-  scroll-snap-align: start;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* รูป */
+/* Desktop: fixed size */
+@media (min-width: 769px) {
+  .product-card {
+    flex: 0 0 260px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+  .product-card {
+    flex: 0 0 calc(100vw - 48px); /* Full width minus padding */
+  }
+}
+
 .product-card img {
   width: 100%;
-  height: 180px;
+  height: clamp(150px, 30vw, 180px);
   object-fit: cover;
   display: block;
 }
 
-/* ข้อความ */
+@media (min-width: 769px) {
+  .product-card img {
+    height: 180px;
+  }
+}
+
 .card-body {
-  padding: 12px;
+  padding: clamp(10px, 2vw, 12px);
 }
 
 .card-body h3 {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: clamp(16px, 3vw, 18px);
 }
 
 .card-body p {
   margin: 0;
-  font-size: 14px;
+  font-size: clamp(13px, 2.5vw, 14px);
   line-height: 1.5;
   color: #444;
 }
 
-@media (max-width: 768px) {
-  .card-track {
-    max-width: 100%;
-    margin-left: 0;
-  }
-}
-
-.card-wrapper {
-  position: relative;
-}
-
+/* Scroll Indicator */
 .scroll-indicator {
   display: flex;
-  gap: 8px;
+  gap: clamp(6px, 1.5vw, 8px);
   justify-content: center;
-  margin-top: 12px;
+  margin-top: clamp(10px, 2vw, 12px);
 }
 
 .scroll-indicator .dot {
-  width: 28px;
+  width: clamp(20px, 5vw, 28px);
   height: 4px;
   background: #bbb;
   border-radius: 2px;
@@ -1114,6 +1249,24 @@ ul.service-box {
   pointer-events: none;
 }
 
+/* Section Wrapper */
 .section-wrapper {
-  padding-inline: clamp(12px, 4vw, 24px);
+  padding-inline: clamp(16px, 5vw, 48px);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding-inline: 16px;
+  }
+}
+
+/* Large Desktop optimization */
+@media (min-width: 1400px) {
+  .section-wrapper {
+    max-width: 1600px;
+  }
 }
