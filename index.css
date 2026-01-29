@@ -1024,8 +1024,11 @@ ul.service-box {
   line-height: 1.4;
 }
 
-/* ----------------------------------------- preview product carousel ---------------------------------------------------------------------- */
-/* Base styles */
+/* ----------------------------------------- 
+   PREVIEW PRODUCT CAROUSEL 
+   ----------------------------------------- */
+
+/* === Base Styles === */
 .preview-product {
   padding: clamp(16px, 3vw, 24px);
 }
@@ -1038,11 +1041,19 @@ ul.service-box {
   margin-bottom: 0;
 }
 
+.section-wrapper {
+  padding-inline: clamp(16px, 5vw, 48px);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* === Card Wrapper === */
 .card-wrapper {
   position: relative;
 }
 
-/* Navigation Buttons */
+/* === Navigation Buttons === */
 .nav-btn {
   position: absolute;
   top: 50%;
@@ -1076,7 +1087,6 @@ ul.service-box {
   transform: translateY(-50%) scale(0.95);
 }
 
-/* Navigation Button Positions - Responsive */
 .nav-btn-left {
   left: clamp(8px, 2vw, 16px);
 }
@@ -1085,131 +1095,44 @@ ul.service-box {
   right: clamp(8px, 2vw, 16px);
 }
 
-/* Tablet: ขยับปุ่มออกไปอีกนิด */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .nav-btn-left {
-    left: clamp(4px, 1vw, 8px);
-  }
-  
-  .nav-btn-right {
-    right: clamp(4px, 1vw, 8px);
-  }
-}
-
-/* Desktop Large: ปุ่มออกไปนอกเฟรม */
-@media (min-width: 1200px) {
-  .nav-btn-left {
-    left: 160px;
-  }
-  
-  .nav-btn-right {
-    right: 160px;
-  }
-}
-
-/* Desktop only */
-@media (min-width: 769px) {
-  .nav-btn {
-    display: flex;
-  }
-}
-
-/* กรอบโชว์ */
+/* === Card Viewport === */
 .card-viewport {
   max-width: calc((262px * 3) + (16px * 2));
   margin: 0 auto;
   overflow: hidden;
-  padding: 4px; /* เผื่อ shadow */
+  padding: 4px;
 }
 
-/* Desktop: แสดง 3 cards */
-@media (min-width: 769px) {
-  .card-viewport {
-    max-width: calc((262px * 3) + (16px * 2));
-    overflow: visible;
-  }
-}
-
-/* Desktop Large: แสดง 4 cards */
-@media (min-width: 1400px) {
-  .card-viewport {
-    max-width: calc((262px * 4) + (16px * 3));
-  }
-}
-
-/* แทร็กเลื่อน */
+/* === Card Track === */
 .card-track {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
-/* Desktop: ซ่อน scroll */
-@media (min-width: 769px) {
-  .card-track {
-    overflow-x: hidden;
-  }
-}
-
-/* Mobile: scroll enabled */
-@media (max-width: 768px) {
-  .card-track {
-    scroll-snap-type: x mandatory;
-    gap: 12px; /* ลด gap ใน mobile */
-  }
-  
-  .product-card {
-    scroll-snap-align: start;
-  }
-}
-
-/* ซ่อน scrollbar */
 .card-track::-webkit-scrollbar {
   display: none;
 }
 
-/* ตัว card */
+/* === Product Card === */
 .product-card {
-  flex: 0 0 clamp(240px, 45vw, 260px);
+  flex: 0 0 clamp(160px, 45vw, 260px);
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Desktop: fixed size */
-@media (min-width: 769px) {
-  .product-card {
-    flex: 0 0 260px;
-  }
-  
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-}
-
-/* Mobile Small */
-@media (max-width: 480px) {
-  .product-card {
-    flex: 0 0 calc(100vw - 48px); /* Full width minus padding */
-  }
+  scroll-snap-align: start;
 }
 
 .product-card img {
   width: 100%;
-  height: clamp(150px, 30vw, 180px);
+  height: clamp(200px, 40vw, 180px);
   object-fit: cover;
   display: block;
-}
-
-@media (min-width: 769px) {
-  .product-card img {
-    height: 180px;
-  }
 }
 
 .card-body {
@@ -1218,17 +1141,17 @@ ul.service-box {
 
 .card-body h3 {
   margin: 0 0 8px;
-  font-size: clamp(16px, 3vw, 18px);
+  font-size: clamp(14px, 3vw, 18px);
 }
 
 .card-body p {
   margin: 0;
-  font-size: clamp(13px, 2.5vw, 14px);
+  font-size: clamp(12px, 2.5vw, 14px);
   line-height: 1.5;
   color: #444;
 }
 
-/* Scroll Indicator */
+/* === Scroll Indicator === */
 .scroll-indicator {
   display: flex;
   gap: clamp(6px, 1.5vw, 8px);
@@ -1253,23 +1176,90 @@ ul.service-box {
   pointer-events: none;
 }
 
-/* Section Wrapper */
-.section-wrapper {
-  padding-inline: clamp(16px, 5vw, 48px);
-  max-width: 1400px;
-  width: 100%;
-  margin: 0 auto;
+/* ========================================
+   MEDIA QUERIES
+   ======================================== */
+
+/* === Mobile (up to 480px) === */
+@media (max-width: 480px) {
+  .product-card {
+    flex: 0 0 calc(75vw - 36px);
+  }
+  
+  .product-card img {
+    height: clamp(180px, 50vw, 240px);
+    aspect-ratio: 3 / 4;
+  }
+  
+  .card-track {
+    gap: 12px;
+  }
 }
 
-/* Mobile optimization */
+/* === Mobile (up to 768px) === */
 @media (max-width: 768px) {
   .section-wrapper {
     padding-inline: 16px;
   }
 }
 
-/* Large Desktop optimization */
+/* === Tablet (769px - 1024px) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-btn-left {
+    left: clamp(4px, 1vw, 8px);
+  }
+  
+  .nav-btn-right {
+    right: clamp(4px, 1vw, 8px);
+  }
+}
+
+/* === Desktop (769px+) === */
+@media (min-width: 769px) {
+  .nav-btn {
+    display: flex;
+  }
+  
+  .card-viewport {
+    max-width: calc((262px * 3) + (16px * 2));
+    overflow: visible;
+  }
+  
+  .card-track {
+    overflow-x: hidden;
+  }
+  
+  .product-card {
+    flex: 0 0 260px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .product-card img {
+    height: 180px;
+  }
+}
+
+/* === Desktop Large (1200px+) === */
+@media (min-width: 1200px) {
+  .nav-btn-left {
+    left: 160px;
+  }
+  
+  .nav-btn-right {
+    right: 160px;
+  }
+}
+
+/* === Desktop XL (1400px+) === */
 @media (min-width: 1400px) {
+  .card-viewport {
+    max-width: calc((262px * 4) + (16px * 3));
+  }
+  
   .section-wrapper {
     max-width: 1600px;
   }
