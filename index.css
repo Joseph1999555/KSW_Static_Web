@@ -124,6 +124,7 @@ h4 {
 
 .section-title {
   font-size: clamp(16px, 4vw, 30px);
+  font-weight: bold;
   margin-bottom: 16px;
   color: #333333;
   text-align: center;
@@ -335,7 +336,7 @@ ul.value-box {
   padding: 0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .contact-image img {
@@ -388,12 +389,12 @@ ul.value-box {
   gap: 10px;
   margin-bottom: 3px;
   margin-top: 0;
-  font-size: 24px;
+  font-size: clamp(16px, 3vw, 24px);
 }
 
 .info-item p {
   margin: 4px 0;
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 24px);
 }
 
 .info-item .icon {
@@ -402,7 +403,7 @@ ul.value-box {
   height: 24px;
 }
 
-.phone-link,
+/* .phone-link,
 .email-link {
   color: #333;
   text-decoration: none;
@@ -412,7 +413,7 @@ ul.value-box {
 .email-link:hover {
   color: #00AEEF;
   text-decoration: underline;
-}
+} */
 
 @media (max-width: 1000px) {
   .contact-box {
@@ -932,7 +933,7 @@ ul.value-box {
 /* หัวข้อ */
 .section-title {
   font-size: clamp(18px, 3vw, 24px);
-  font-weight: 500;
+  /* font-weight: 500; */
   margin-bottom: clamp(16px, 3vw, 32px);
 }
 
