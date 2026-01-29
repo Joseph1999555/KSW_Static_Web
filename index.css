@@ -197,119 +197,129 @@ ul.value-box {
 .about {
   padding: 60px 20px;
   background: #f5f6fa;
-  height: 100%;
 }
 
-.about-box {
-  display: grid;
-  align-items: stretch;
-  gap: clamp(8px, 3vw, 40px);
-  grid-template-columns: 60% 40%;
+.about-container {
   max-width: clamp(320px, 90vw, 1400px);
   margin: 0 auto;
 }
 
+.about-title {
+  font-size: clamp(20px, 4vw, 36px);
+  margin: 0;
+}
+
+/* Text Wrap Container */
+.text-wrap-container {
+  --width: 55%;
+  --max-width: 650px;
+  --spacing: clamp(20px, 3.5vw, 50px);
+  
+  display: block;
+}
+
+.text-wrap--image {
+  position: relative;
+  float: left;
+  width: var(--width);
+  padding-right: var(--spacing);
+  max-width: var(--max-width);
+}
 
 .about-image {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 12px;
+  aspect-ratio: 4 / 3;
   background-image: url("images/KSW-Company-01.jpg");
   background-size: cover;
-  background-position: bottom;
-  /* ดันรูปขึ้นนิด */
-  min-height: 260px;
-  /* กันจอเล็ก */
-}
-
-
-.about-image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  object-fit: cover;
+  background-position: center;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   transition: transform 0.4s ease;
-  /* cursor: zoom-in; */
 }
 
-/* HOVERRRRRRRRR */
-.about-image img:hover {
+.about-image:hover {
   transform: scale(1.03);
 }
 
-
-.about-highlight h3 {
-  margin-bottom: 0;
-  font-size: 20px;
+.about-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.about-highlight ul {
+.text-wrap--text h3 {
+  font-size: clamp(16px, 2.5vw, 26px);
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.about-highlight li {
-  line-height: 1.6;
-  color: #333;
-  font-size: 18px;
-}
-
-.about-image li {
-  line-height: 1.6;
-  color: #333;
-  font-size: 16px;
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.about-content h3 {
-  font-size: clamp(6px, 2.2vw, 28px);
-  margin-top: 0;
-  margin-bottom: 8px;
   position: relative;
   padding-left: 14px;
+  white-space: nowrap;
+
 }
 
-.about-content h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 4px;
-  height: 60%;
-  background: #00AEEF;
-  border-radius: 2px;
+
+.text-wrap--text p {
+  font-size: clamp(14px, 1.6vw, 25px);
+  line-height: 1.6;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  text-align: left;
 }
 
-.about-content p {
-  font-size: clamp(5px, 1.6vw, 18px);
-  line-height: clamp(16px, 2.5vw, 28px);
-  margin-top: 0;
+/* Tablet */
+@media (max-width: 1024px) {
+  .text-wrap-container {
+    --width: 60%;
+    --max-width: 500px;
+  }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+  .text-wrap-container {
+    --width: 50%;
+    --max-width: 250px;
+    --spacing: 18px;
+  }
 
-  .about-box {
-    grid-template-columns: 50% 50%;
+  .text-wrap--text h3 {
+    font-size: clamp(15px, 4vw, 20px);
+  }
+
+  .text-wrap--text p {
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.6;
   }
 
   .about-image {
-    min-height: 200px;
-    background-position: center;
-  }
-
-  .about-content h3 {
-    font-size: clamp(10px, 3vw, 14px);
-  }
-
-  .about-content p {
-    font-size: clamp(8px, 2.5vw, 12px);
+    aspect-ratio: 3 / 4;
   }
 }
 
+/* Very Small Mobile */
+@media (max-width: 480px) {
+  .text-wrap-container {
+    --width: 45%;
+    --max-width: 180px;
+    --spacing: 14px;
+  }
+
+  .text-wrap--text h3 {
+    font-size: clamp(12px, 3.8vw, 18px);
+  }
+
+  .text-wrap--text p {
+    font-size: clamp(12px, 3.6vw, 14px);
+  }
+
+   .about-image {
+    aspect-ratio: 3 / 4;
+  }
+}
 
 /* Contact Section */
 .contact {
@@ -1026,12 +1036,6 @@ ul.service-box {
 
 .product-category:last-child {
   margin-bottom: 0;
-}
-
-.section-title {
-  margin-bottom: clamp(12px, 2vw, 16px);
-  font-size: clamp(20px, 4vw, 24px);
-  text-align: center;
 }
 
 .card-wrapper {
