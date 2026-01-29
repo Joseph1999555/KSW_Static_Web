@@ -197,7 +197,7 @@ ul.value-box {
 /* About Section */
 .about {
   padding: 60px 20px;
-  background: #f5f6fa;
+  background: #ffffff;
 }
 
 .about-container {
@@ -1112,6 +1112,7 @@ ul.service-box {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  justify-content: flex-start;
 }
 
 .card-track::-webkit-scrollbar {
@@ -1181,7 +1182,7 @@ ul.service-box {
    MEDIA QUERIES
    ======================================== */
 
-/* === Mobile (up to 480px) === */
+/* === Mobile Small (up to 480px) === */
 @media (max-width: 480px) {
   .product-card {
     flex: 0 0 calc(75vw - 36px);
@@ -1197,8 +1198,23 @@ ul.service-box {
   }
 }
 
-/* === Mobile (up to 768px) === */
-@media (max-width: 768px) {
+/* === Mobile Medium (481px - 640px) === */
+@media (min-width: 481px) and (max-width: 640px) {
+  .product-card {
+    flex: 0 0 calc(70vw - 32px);
+  }
+  
+  .card-track {
+    gap: 14px;
+  }
+}
+
+/* === Mobile Large / Tablet Small (641px - 768px) === */
+@media (min-width: 641px) and (max-width: 768px) {
+  .product-card {
+    flex: 0 0 calc(45vw - 24px);
+  }
+  
   .section-wrapper {
     padding-inline: 16px;
   }
@@ -1206,23 +1222,42 @@ ul.service-box {
 
 /* === Tablet (769px - 1024px) === */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .nav-btn-left {
-    left: clamp(4px, 1vw, 8px);
+  
+  .card-viewport {
+    max-width: 100%; 
+    overflow: hidden; 
   }
   
-  .nav-btn-right {
-    right: clamp(4px, 1vw, 8px);
+  .card-track {
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+  }
+  
+  .product-card {
+    flex: 0 0 calc(45vw - 24px); 
+  }
+  
+  .product-card img {
+    height: clamp(160px, 35vw, 200px); /* responsive height */
   }
 }
 
-/* === Desktop (769px+) === */
-@media (min-width: 769px) {
+/* === Desktop Small (1025px - 1199px) === */
+@media (min-width: 1025px) and (max-width: 1199px) {
   .nav-btn {
     display: flex;
   }
   
+  .nav-btn-left {
+    left: clamp(16px, 3vw, 80px);
+  }
+  
+  .nav-btn-right {
+    right: clamp(16px, 3vw, 80px);
+  }
+  
   .card-viewport {
-    max-width: calc((262px * 3) + (16px * 2));
+    max-width: calc((260px * 3) + (16px * 2));
     overflow: visible;
   }
   
@@ -1244,29 +1279,132 @@ ul.service-box {
   }
 }
 
-/* === Desktop Large (1200px+) === */
-@media (min-width: 1200px) {
+/* === Desktop Medium (1200px - 1399px) === */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .nav-btn {
+    display: flex;
+  }
+  
   .nav-btn-left {
-    left: 160px;
+    left: 100px;
   }
   
   .nav-btn-right {
-    right: 160px;
+    right: 100px;
+  }
+  
+  .card-viewport {
+    max-width: calc((260px * 3) + (16px * 2));
+    overflow: visible;
+  }
+  
+  .card-track {
+    overflow-x: hidden;
+  }
+  
+  .product-card {
+    flex: 0 0 260px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .product-card img {
+    height: 180px;
   }
 }
 
-/* === Desktop XL (1400px+) === */
-@media (min-width: 1400px) {
+/* === Desktop Large (1400px - 1599px) === */
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .nav-btn {
+    display: flex;
+  }
+  
+  .nav-btn-left {
+    left: 120px;
+  }
+  
+  .nav-btn-right {
+    right: 120px;
+  }
+  
   .card-viewport {
-    max-width: calc((262px * 4) + (16px * 3));
+    max-width: calc((260px * 4) + (16px * 3));
+    overflow: visible;
+  }
+  
+  .card-track {
+    overflow-x: hidden;
   }
   
   .section-wrapper {
     max-width: 1600px;
   }
+  
+  .product-card {
+    flex: 0 0 260px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .product-card img {
+    height: 180px;
+  }
 }
 
-/* brands */
+/* === Desktop XL (1600px+) === */
+@media (min-width: 1600px) {
+  .nav-btn {
+    display: flex;
+  }
+  
+  .nav-btn-left {
+    left: 500px;
+  }
+  
+  .nav-btn-right {
+    right: 500px;
+  }
+  
+  .card-viewport {
+    max-width: calc((260px * 4) + (16px * 4));
+    overflow: visible;
+  }
+  
+  .card-track {
+    overflow-x: hidden;
+  }
+  
+  .section-wrapper {
+    max-width: 1600px;
+  }
+  
+  .product-card {
+    flex: 0 0 260px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .product-card img {
+    height: 180px;
+  }
+}
+
+/* ถ้าจอขนาดตั้งแต่ 769px ขึ้นไป card จะอยู่กลาง */
+@media (min-width: 1600px) {
+  .card-track {
+    justify-content: center; /* desktop อยู่กลาง */
+  }
+}
+
 /* Brands Section */
 .brands {
   padding: 60px 20px;

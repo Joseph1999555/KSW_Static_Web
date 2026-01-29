@@ -173,74 +173,68 @@ function renderProductSections() {
 function initProductScroll(type) {
   if (initializedSections.has(type)) return;
   initializedSections.add(type);
-  
+
   const track = document.getElementById(`cardTrack-${type}`);
   const indicator = document.getElementById(`indicator-${type}`);
   const navLeft = document.getElementById(`navLeft-${type}`);
   const navRight = document.getElementById(`navRight-${type}`);
-  
+
   if (!track || !indicator) return;
 
-  const originalCards = Array.from(track.querySelectorAll('.product-card:not(.clone)'));
-  const cardCount = originalCards.length;
-  const gap = 16;
-  const cardWidth = originalCards[0].offsetWidth + gap;
-  const isMobile = window.innerWidth <= 768;
+  const cards = Array.from(track.querySelectorAll('.product-card'));
+  const cardCount = cards.length;
 
-  let currentIndex = 0;
+  // แก้จาก: const isMobile = window.innerWidth <= 768;
+  // เป็น: ตรวจจับ touch device (รวม iPad)
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const isMobile = window.innerWidth <= 1024 || isTouchDevice;
 
-  // Clone cards for desktop infinite loop
-  if (!isMobile) {
-    const cloneBefore = [];
-    const cloneAfter = [];
-    
-    originalCards.forEach(card => {
-      const cloneBef = card.cloneNode(true);
-      const cloneAft = card.cloneNode(true);
-      cloneBef.classList.add("clone");
-      cloneAft.classList.add("clone");
-      cloneBefore.push(cloneBef);
-      cloneAfter.push(cloneAft);
-    });
-    
-    cloneBefore.forEach(clone => {
-      track.insertBefore(clone, originalCards[0]);
-    });
-    
-    cloneAfter.forEach(clone => {
-      track.appendChild(clone);
-    });
-    
-    track.scrollLeft = cardCount * cardWidth;
-  }
+  const CARDS_PER_PAGE = window.innerWidth >= 1400 ? 4 : 3;
+  const totalPages = Math.ceil(cardCount / CARDS_PER_PAGE);
+
+  let currentPage = 0;
 
   // Setup indicator dots
-  setupIndicator(indicator, cardCount, cardWidth, track, isMobile);
+  setupIndicator(indicator, totalPages, isMobile, cardCount);
 
   // Setup navigation
   if (isMobile) {
-    setupMobileNavigation(track, cardWidth, cardCount, updateIndicator);
+    setupMobileNavigation(track, cardCount, updateIndicator);
     if (navLeft) navLeft.style.display = 'none';
     if (navRight) navRight.style.display = 'none';
   } else {
-    setupDesktopNavigation(track, navLeft, navRight, cardWidth, cardCount, updateIndicator);
+    setupDesktopNavigation(track, navLeft, navRight, cardCount, CARDS_PER_PAGE, updateIndicator);
   }
 
-  function updateIndicator(index) {
+  function updateIndicator(pageIndex) {
     const dots = indicator.querySelectorAll(".dot");
     dots.forEach(d => d.classList.remove("active"));
-    dots[index]?.classList.add("active");
-    currentIndex = index;
+    dots[pageIndex]?.classList.add("active");
+    currentPage = pageIndex;
   }
 }
 
 // =============================================
 // HELPER FUNCTIONS
 // =============================================
-function setupIndicator(indicator, cardCount, cardWidth, track, isMobile) {
+function setupIndicator(indicator, pageCount, isMobile, cardCount) {
   indicator.innerHTML = "";
-  
-  for (let i = 0; i < cardCount; i++) {
+
+  let dotCount;
+  if (isMobile) {
+    const track = indicator.closest('.product-category').querySelector('.card-track');
+    const card = track.querySelector('.product-card');
+    const cardWidth = card.offsetWidth;
+    const gap = 16;
+    const viewportWidth = track.offsetWidth;
+    const cardsPerView = Math.round(viewportWidth / (cardWidth + gap));
+    const actualCardsPerView = cardsPerView === 0 ? 1 : cardsPerView;
+    dotCount = Math.ceil(cardCount / actualCardsPerView);
+  } else {
+    dotCount = pageCount;
+  }
+
+  for (let i = 0; i < dotCount; i++) {
     const dot = document.createElement("div");
     dot.className = "dot";
     if (i === 0) dot.classList.add("active");
@@ -249,16 +243,34 @@ function setupIndicator(indicator, cardCount, cardWidth, track, isMobile) {
       const dots = indicator.querySelectorAll(".dot");
       dots.forEach(d => d.classList.remove("active"));
       dot.classList.add("active");
-      
+
       if (isMobile) {
+        const track = dot.closest('.product-category').querySelector('.card-track');
+        const card = track.querySelector('.product-card');
+        const cardWidth = card.offsetWidth;
+        const gap = 16;
+        const viewportWidth = track.offsetWidth;
+        const cardsPerView = Math.round(viewportWidth / (cardWidth + gap));
+
+        // แก้ตรงนี้: ใช้ pageWidth แทน cardsPerView * (cardWidth + gap)
+        const pageWidth = cardsPerView * cardWidth + (cardsPerView - 1) * gap;
+
         track.scrollTo({
-          left: i * cardWidth,
+          left: i * pageWidth,
           behavior: "smooth"
         });
       } else {
-        const currentSet = Math.floor(track.scrollLeft / (cardCount * cardWidth));
+        const track = dot.closest('.product-category').querySelector('.card-track');
+        const card = track.querySelector('.product-card');
+        const cardWidth = card.offsetWidth;
+        const gap = 16;
+        const CARDS_PER_PAGE = window.innerWidth >= 1400 ? 4 : 3; // เพิ่มการตรวจจับ
+
+        // แก้ตรงนี้: ใช้ pageWidth แทน CARDS_PER_PAGE * (cardWidth + gap)
+        const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+
         track.scrollTo({
-          left: (currentSet * cardCount + i) * cardWidth,
+          left: i * pageWidth,
           behavior: "smooth"
         });
       }
@@ -268,76 +280,107 @@ function setupIndicator(indicator, cardCount, cardWidth, track, isMobile) {
   }
 }
 
-function setupMobileNavigation(track, cardWidth, cardCount, updateIndicator) {
+function setupMobileNavigation(track, cardCount, updateIndicator) {
+  const card = track.querySelector('.product-card');
+  
   track.addEventListener("scroll", () => {
-    const rawIndex = track.scrollLeft / cardWidth;
-    const index = Math.round(rawIndex);
+    const cardWidth = card.offsetWidth;
+    const gap = 16;
+    const viewportWidth = track.offsetWidth;
+    const scrollLeft = track.scrollLeft;
+    const maxScroll = track.scrollWidth - track.offsetWidth;
     
-    if (index >= 0 && index < cardCount) {
-      updateIndicator(index);
+    // ใช้ Math.round กลับมา แต่เพิ่มการตรวจจับขอบ
+    const cardsPerView = Math.round(viewportWidth / (cardWidth + gap));
+    const actualCardsPerView = cardsPerView === 0 ? 1 : cardsPerView;
+    
+    const pageWidth = actualCardsPerView * cardWidth + (actualCardsPerView - 1) * gap;
+    const pageIndex = Math.round(scrollLeft / pageWidth);
+    const totalPages = Math.ceil(cardCount / actualCardsPerView);
+    
+    // เช็คว่า scroll ถึงขอบสุดหรือยัง
+    const isAtEnd = scrollLeft >= maxScroll - 10; // tolerance 10px
+    const finalIndex = isAtEnd ? totalPages - 1 : Math.min(pageIndex, totalPages - 1);
+    
+    if (finalIndex >= 0 && finalIndex < totalPages) {
+      updateIndicator(finalIndex);
     }
   });
 }
 
-function setupDesktopNavigation(track, navLeft, navRight, cardWidth, cardCount, updateIndicator) {
+function setupDesktopNavigation(track, navLeft, navRight, cardCount, CARDS_PER_PAGE, updateIndicator) {
   if (!navLeft || !navRight) return;
-  
+
+  const totalPages = Math.ceil(cardCount / CARDS_PER_PAGE);
+  let currentPage = 0;
+
   navLeft.style.display = 'flex';
   navRight.style.display = 'flex';
 
-  let currentIndex = 0;
-  let isResetting = false;
+  // Update button states
+  function updateButtonStates() {
+    // เปลี่ยนจาก disabled เป็นซ่อน/แสดง
+    navLeft.style.display = currentPage === 0 ? 'none' : 'flex';
+    navRight.style.display = currentPage === totalPages - 1 ? 'none' : 'flex';
+  }
 
   navLeft.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + cardCount) % cardCount;
-    const currentSet = Math.floor(track.scrollLeft / (cardCount * cardWidth));
-    track.scrollTo({
-      left: (currentSet * cardCount + currentIndex) * cardWidth,
-      behavior: "smooth"
-    });
-    updateIndicator(currentIndex);
+    if (currentPage > 0) {
+      currentPage--;
+      const card = track.querySelector('.product-card');
+      const cardWidth = card.offsetWidth;
+      const gap = 16;
+
+      // แก้ตรงนี้
+      const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+
+      track.scrollTo({
+        left: currentPage * pageWidth,
+        behavior: "smooth"
+      });
+      updateIndicator(currentPage);
+      updateButtonStates();
+    }
   });
 
   navRight.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % cardCount;
-    const currentSet = Math.floor(track.scrollLeft / (cardCount * cardWidth));
-    track.scrollTo({
-      left: (currentSet * cardCount + currentIndex) * cardWidth,
-      behavior: "smooth"
-    });
-    updateIndicator(currentIndex);
+    if (currentPage < totalPages - 1) {
+      currentPage++;
+      const card = track.querySelector('.product-card');
+      const cardWidth = card.offsetWidth;
+      const gap = 16;
+
+      // แก้ตรงนี้
+      const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+
+      track.scrollTo({
+        left: currentPage * pageWidth,
+        behavior: "smooth"
+      });
+      updateIndicator(currentPage);
+      updateButtonStates();
+    }
   });
 
+  // Initial button state
+  updateButtonStates();
+
+  // Update on manual scroll
   track.addEventListener("scroll", () => {
-    if (isResetting) return;
-    
+    const card = track.querySelector('.product-card');
+    const cardWidth = card.offsetWidth;
+    const gap = 16;
     const scrollLeft = track.scrollLeft;
-    const totalWidth = cardCount * cardWidth;
-    const maxScroll = totalWidth * 3;
-    
-    const rawIndex = scrollLeft / cardWidth;
-    const index = Math.round(rawIndex) % cardCount;
-    
-    if (index !== currentIndex) {
-      currentIndex = index;
-      updateIndicator(currentIndex);
-    }
-    
-    if (scrollLeft >= maxScroll - cardWidth) {
-      isResetting = true;
-      track.style.scrollBehavior = 'auto';
-      track.scrollLeft = totalWidth;
-      track.style.scrollBehavior = '';
-      setTimeout(() => isResetting = false, 50);
-    }
-    
-    if (scrollLeft <= cardWidth) {
-      isResetting = true;
-      track.style.scrollBehavior = 'auto';
-      track.scrollLeft = totalWidth;
-      track.style.scrollBehavior = '';
-      setTimeout(() => isResetting = false, 50);
-    }
+
+    // แก้จาก Math.round(scrollLeft / (CARDS_PER_PAGE * (cardWidth + gap)))
+    const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+    const pageIndex = Math.round(scrollLeft / pageWidth);
+
+    // if (pageIndex !== currentPage) {
+    //   currentPage = pageIndex;
+    //   updateIndicator(currentPage);
+    //   updateButtonStates();
+    // }
   });
 }
 
@@ -346,7 +389,7 @@ function setupDesktopNavigation(track, navLeft, navRight, cardWidth, cardCount, 
 // =============================================
 function initAllProductSections() {
   renderProductSections();
-  
+
   Object.keys(productData).forEach(key => {
     const type = productData[key].type;
     initProductScroll(type);
@@ -355,15 +398,15 @@ function initAllProductSections() {
 
 function watchProductScroll() {
   if (isProductSystemInitialized) return;
-  
+
   const container = document.getElementById("productSection");
-  
+
   if (container) {
     initAllProductSections();
     isProductSystemInitialized = true;
   } else {
     if (productObserver) productObserver.disconnect();
-    
+
     productObserver = new MutationObserver(() => {
       if (document.getElementById("productSection")) {
         initAllProductSections();
