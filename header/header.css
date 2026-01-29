@@ -6,6 +6,7 @@
 
 .site-banner {
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: center; /* กลางแนวนอน */
   align-items: center;     /* กลางแนวตั้ง */
@@ -18,7 +19,7 @@
 
 /* per-page backgrounds */
 .site-banner.bg-home {
-  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/KSW01.webp") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/KSW03.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-news {
@@ -26,7 +27,7 @@
 }
 
 .site-banner.bg-product {
-  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/KSW02.webp") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/KSW02.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-order {
@@ -38,11 +39,11 @@
 }
 
 .site-banner.bg-about {
-  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/KSW03.webp") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/KSW01.webp") center/cover no-repeat;
 }
 
 .site-banner.bg-contact {
-  background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("../images/contact_background_01.png") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("../images/contact_background_01.png") center/cover no-repeat;
 }
 
 .header-top {
@@ -72,6 +73,13 @@
 
 .logo a:active {
   color: #0099CC;
+}
+
+.logo img {
+  height: clamp(20px, 8vw, 40px);
+  width: auto;
+  vertical-align: middle;
+  padding: 20px;
 }
 
 .main-nav {
@@ -219,4 +227,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.hero-subtitle {
+  margin: 8px;
+  font-size: clamp(14px, 4vw, 28px);
+  text-align: center;
+  color: #FFF100;
+  max-width: 90%;
+}
+
+.hero-subtitle:empty {
+  display: none;
 }

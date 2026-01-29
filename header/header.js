@@ -8,6 +8,7 @@ fetch("header/header.html")
 function initHeader() {
     const bannerEl = document.querySelector('.site-banner');
     const titleEl = document.getElementById('page-title');
+    const subTitleEl = document.getElementById('page-subtitle');
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.getElementById('main-nav');
 
@@ -82,6 +83,13 @@ function initHeader() {
             titleEl.textContent = '';
             setHeaderBg('');
         }
+
+        if (path === "/") {
+            subTitleEl.textContent =
+                "ผู้จัดจำหน่ายอุปกรณ์การเกษตรและฮาร์ดแวร์ พร้อมบริการจัดส่งทั่วประเทศ";
+        } else {
+            subTitleEl.textContent = "";
+        }
     }
 
     // initial sync
@@ -111,6 +119,7 @@ function initHeader() {
                 navToggle.classList.remove('open');
             }
         }
+        updateFromPath();
     });
 
     // handle browser back/forward

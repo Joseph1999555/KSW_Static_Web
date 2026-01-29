@@ -1,0 +1,432 @@
+// =============================================
+// MOCK DATA
+// =============================================
+const productData = {
+  hoses: {
+    title: "ผลิตภัณฑ์สินค้าสายยาง",
+    type: "hose",
+    items: [
+      {
+        id: 1,
+        name: "สายยางใส",
+        description: "ผลิตจากพลาสติก PVC คุณภาพดี มองเห็นการไหลของของเหลวได้ชัดเจน ปราศจากสารโลหะหนัก และสารที่เป็นอันตรายต่อสิ่งแวดล้อม",
+        image: "./images/clearhose.jpg",
+        alt: "สายยางใส"
+      },
+      {
+        id: 2,
+        name: "สายยางฟ้า",
+        description: "มีการผสมเนื้อยางพิเศษลงในพลาสติก เพื่อให้มีความยืดหยุ่นสูงเป็นพิเศษ เมื่อโดนรถทับหรือพับงอ จะคืนตัวกลับมาทรงเดิมได้ทันที ไม่หักคา",
+        image: "./images/bluehose.jpg",
+        alt: "สายยางสีฟ้า"
+      },
+      {
+        id: 3,
+        name: "สายยางเขียว",
+        description: "ด้วยเนื้อยางที่ทึบแสง 100% รังสี UV ไม่สามารถทะลุผ่านได้ จึงช่วยลดการเกิดของตะไคร่น้ำ ทำให้ไม่มีการอุดตันของหัวฉีดหรือสปริงเกอร์",
+        image: "./images/greenhose.jpg",
+        alt: "สายยางสีเขียว"
+      },
+    ]
+  },
+  pondliners: {
+    title: "ผลิตภัณฑ์สินค้าก่อสร้าง",
+    type: "construct",
+    items: [
+      {
+        id: 5,
+        name: "ตาข่ายลวด MT (ชุบกัลวาไนซ์)",
+        description: "เป็นการเคลือบสังกะสีแบบจุ่มร้อน ทำให้มีความทนทานต่อการกัดกร่อนจากสภาพอากาศ และแรงกระแทกจากสัตว์หรือสิ่งของได้ดี",
+        image: "./images/mt.jpg",
+        alt: "ตาข่ายลวด MT (ชุบกัลวาไนซ์)"
+      },
+      {
+        id: 6,
+        name: "ลวดเชื่อม KOBE-30",
+        description: "เป็นลวดเชื่อมไฟฟ้าที่มียอดขายอันดับ 1 ตามมาตรฐาน AWS A5.1 E6013 การอาร์คคงที่ สม่ำเสมอ ไม่มีสะดุด",
+        image: "./images/kobe-30.jpg",
+        alt: "ลวดเชื่อม KOBE-30"
+      },
+      {
+        id: 7,
+        name: "ใบตัด SUMO Fast Cut",
+        description: "ผลิตจากเม็ดทรายอลูมินั่มออกไซด์เกรดพิเศษ หนาเพียง 1.0 มม. ทำให้รอยตัดเล็ก คมกริบ ออกแบบมาเพื่อตัดสแตนเลส และเหล็กได้ทุกชนิด",
+        image: "./images/sumo-fast-cut.jpg",
+        alt: "ใบตัด SUMO Fast Cut"
+      }
+    ]
+  },
+  uvs: {
+    title: "ผลิตภัณฑ์สินค้ากรองแสง",
+    type: "uv",
+    items: [
+      {
+        id: 8,
+        name: "กรองแสงสีฟ้า",
+        description: "กรองแสงสีฟ้านั้นสามารถสะท้อนแสงได้ปานกลาง ทำให้ช่วยลดอุณหภูมิได้ดี ทั้งยังมีส่วนช่วยในเรื่องของใบให้มีสีเข้มมากยิ่งขึ้นอีกด้วย",
+        image: "./images/sunshadenet blue.jpg",
+        alt: "กรองแสง ผืนสีฟ้า"
+      },
+      {
+        id: 9,
+        name: "กรองแสงสีแดง",
+        description: "สีแดงเป็นสีที่ส่งผลต่อแมลงบางชนิด ซึ่งช่วยลดแมลงไม่ให้ใกล้พื้นที่เพาะปลูกแล้วยังช่วยให้พืชมีอัตราติดดอกมากขึ้น",
+        image: "./images/sunshadenet red.jpg",
+        alt: "กรองแสง ผืนสีแดง"
+      },
+      {
+        id: 10,
+        name: "กรองแสงสีขาว",
+        description: "ช่วยลดอุณหภูมิ ลดแรงลม ลดความแรงของเม็ดฝน รวมไปถึงการลดอัตราการไหม้ของใบ",
+        image: "./images/sunshadenet white.jpg",
+        alt: "กรองแสง ผืนสีขาว"
+      },
+      {
+        id: 11,
+        name: "กรองแสงสีเงิน",
+        description: "ช่วยสะท้อนความร้อน ลดอุณหภูมิโรงเรือน และกระจายแสงได้ทั่วถึง ทำให้พืชโตไว และประหยัดน้ำ",
+        image: "./images/sunshadenet gray.jpg",
+        alt: "กรองแสง ผืนสีเงิน"
+      },
+      {
+        id: 12,
+        name: "กรองแสงสีเขียว",
+        description: "เหมาะกับบ่อน้ำ บ่อเลี้ยงกบ หรือสระน้ำที่ต้องการลดการเติบโตของตะไคร่น้ำภายในบ่อ",
+        image: "./images/sunshadenet green.jpg",
+        alt: "กรองแสง ผืนสีเขียว"
+      },
+      {
+        id: 13,
+        name: "กรองแสงสีดำ",
+        description: "แสงที่ผ่านลงมานั้นเป็นแสงขาวตามธรรมชาติ ซึ่งเหมาะแก่การสร้างร่มเงาให้พืช หรือนำไปสร้างร่มเงาให้กับบ้านของเราได้",
+        image: "./images/sunshadenet black.jpg",
+        alt: "กรองแสง ผืนสีดำ"
+      }
+    ]
+  }
+};
+
+// =============================================
+// STATE MANAGEMENT
+// =============================================
+let isProductSystemInitialized = false;
+let productObserver = null;
+let initializedSections = new Set();
+
+// =============================================
+// RENDER FUNCTIONS
+// =============================================
+function renderProductSections() {
+  const container = document.getElementById("productSection");
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  Object.keys(productData).forEach(key => {
+    const category = productData[key];
+    const trackId = `cardTrack-${category.type}`;
+    const indicatorId = `indicator-${category.type}`;
+    const navLeftId = `navLeft-${category.type}`;
+    const navRightId = `navRight-${category.type}`;
+
+    const sectionHTML = `
+      <div class="product-category" data-type="${category.type}">
+        <h2 class="section-title">${category.title}</h2>
+        <div class="card-wrapper">
+          <button class="nav-btn nav-btn-left" id="${navLeftId}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <button class="nav-btn nav-btn-right" id="${navRightId}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          
+          <div class="card-viewport">
+            <div class="card-track" id="${trackId}">
+              ${category.items.map(item => `
+                <div class="product-card" data-id="${item.id}">
+                  <img src="${item.image}" alt="${item.alt}">
+                  <div class="card-body">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator" id="${indicatorId}"></div>
+      </div>
+    `;
+
+    container.insertAdjacentHTML('beforeend', sectionHTML);
+  });
+}
+
+// =============================================
+// SCROLL INITIALIZATION
+// =============================================
+function initProductScroll(type) {
+  if (initializedSections.has(type)) return;
+  initializedSections.add(type);
+
+  const track = document.getElementById(`cardTrack-${type}`);
+  const indicator = document.getElementById(`indicator-${type}`);
+  const navLeft = document.getElementById(`navLeft-${type}`);
+  const navRight = document.getElementById(`navRight-${type}`);
+
+  if (!track || !indicator) return;
+
+  const cards = Array.from(track.querySelectorAll('.product-card'));
+  const cardCount = cards.length;
+
+  // แก้จาก: const isMobile = window.innerWidth <= 768;
+  // เป็น: ตรวจจับ touch device (รวม iPad)
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const isMobile = window.innerWidth <= 1024 || isTouchDevice;
+
+  const CARDS_PER_PAGE = window.innerWidth >= 1400 ? 4 : 3;
+  const totalPages = Math.ceil(cardCount / CARDS_PER_PAGE);
+
+  let currentPage = 0;
+
+  // Setup indicator dots
+  setupIndicator(indicator, totalPages, isMobile, cardCount);
+
+  // Setup navigation
+  if (isMobile) {
+    setupMobileNavigation(track, cardCount, updateIndicator);
+    if (navLeft) navLeft.style.display = 'none';
+    if (navRight) navRight.style.display = 'none';
+  } else {
+    setupDesktopNavigation(track, navLeft, navRight, cardCount, CARDS_PER_PAGE, updateIndicator);
+  }
+
+  function updateIndicator(pageIndex) {
+    const dots = indicator.querySelectorAll(".dot");
+    dots.forEach(d => d.classList.remove("active"));
+    dots[pageIndex]?.classList.add("active");
+    currentPage = pageIndex;
+  }
+}
+
+// =============================================
+// HELPER FUNCTIONS
+// =============================================
+function setupIndicator(indicator, pageCount, isMobile, cardCount) {
+  indicator.innerHTML = "";
+
+  let dotCount;
+  if (isMobile) {
+    const track = indicator.closest('.product-category').querySelector('.card-track');
+    const card = track.querySelector('.product-card');
+    const cardWidth = card.offsetWidth;
+    const gap = 16;
+    const viewportWidth = track.offsetWidth;
+    const cardsPerView = Math.round(viewportWidth / (cardWidth + gap));
+    const actualCardsPerView = cardsPerView === 0 ? 1 : cardsPerView;
+    dotCount = Math.ceil(cardCount / actualCardsPerView);
+  } else {
+    dotCount = pageCount;
+  }
+
+  for (let i = 0; i < dotCount; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    if (i === 0) dot.classList.add("active");
+
+    dot.onclick = () => {
+      const dots = indicator.querySelectorAll(".dot");
+      dots.forEach(d => d.classList.remove("active"));
+      dot.classList.add("active");
+
+      if (isMobile) {
+        const track = dot.closest('.product-category').querySelector('.card-track');
+        const card = track.querySelector('.product-card');
+        const cardWidth = card.offsetWidth;
+        const gap = 16;
+        const viewportWidth = track.offsetWidth;
+        const cardsPerView = Math.round(viewportWidth / (cardWidth + gap));
+
+        // แก้ตรงนี้: ใช้ pageWidth แทน cardsPerView * (cardWidth + gap)
+        const pageWidth = cardsPerView * cardWidth + (cardsPerView - 1) * gap;
+
+        track.scrollTo({
+          left: i * pageWidth,
+          behavior: "smooth"
+        });
+      } else {
+        const track = dot.closest('.product-category').querySelector('.card-track');
+        const card = track.querySelector('.product-card');
+        const cardWidth = card.offsetWidth;
+        const gap = 16;
+        const CARDS_PER_PAGE = window.innerWidth >= 1400 ? 4 : 3; // เพิ่มการตรวจจับ
+
+        // แก้ตรงนี้: ใช้ pageWidth แทน CARDS_PER_PAGE * (cardWidth + gap)
+        const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+
+        track.scrollTo({
+          left: i * pageWidth,
+          behavior: "smooth"
+        });
+      }
+    };
+
+    indicator.appendChild(dot);
+  }
+}
+
+function setupMobileNavigation(track, cardCount, updateIndicator) {
+  const card = track.querySelector('.product-card');
+  
+  track.addEventListener("scroll", () => {
+    const cardWidth = card.offsetWidth;
+    const gap = 16;
+    const viewportWidth = track.offsetWidth;
+    const scrollLeft = track.scrollLeft;
+    const maxScroll = track.scrollWidth - track.offsetWidth;
+    
+    // ใช้ Math.round กลับมา แต่เพิ่มการตรวจจับขอบ
+    const cardsPerView = Math.round(viewportWidth / (cardWidth + gap));
+    const actualCardsPerView = cardsPerView === 0 ? 1 : cardsPerView;
+    
+    const pageWidth = actualCardsPerView * cardWidth + (actualCardsPerView - 1) * gap;
+    const pageIndex = Math.round(scrollLeft / pageWidth);
+    const totalPages = Math.ceil(cardCount / actualCardsPerView);
+    
+    // เช็คว่า scroll ถึงขอบสุดหรือยัง
+    const isAtEnd = scrollLeft >= maxScroll - 10; // tolerance 10px
+    const finalIndex = isAtEnd ? totalPages - 1 : Math.min(pageIndex, totalPages - 1);
+    
+    if (finalIndex >= 0 && finalIndex < totalPages) {
+      updateIndicator(finalIndex);
+    }
+  });
+}
+
+function setupDesktopNavigation(track, navLeft, navRight, cardCount, CARDS_PER_PAGE, updateIndicator) {
+  if (!navLeft || !navRight) return;
+
+  const totalPages = Math.ceil(cardCount / CARDS_PER_PAGE);
+  let currentPage = 0;
+
+  navLeft.style.display = 'flex';
+  navRight.style.display = 'flex';
+
+  // Update button states
+  function updateButtonStates() {
+    // เปลี่ยนจาก disabled เป็นซ่อน/แสดง
+    navLeft.style.display = currentPage === 0 ? 'none' : 'flex';
+    navRight.style.display = currentPage === totalPages - 1 ? 'none' : 'flex';
+  }
+
+  navLeft.addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      const card = track.querySelector('.product-card');
+      const cardWidth = card.offsetWidth;
+      const gap = 16;
+
+      // แก้ตรงนี้
+      const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+
+      track.scrollTo({
+        left: currentPage * pageWidth,
+        behavior: "smooth"
+      });
+      updateIndicator(currentPage);
+      updateButtonStates();
+    }
+  });
+
+  navRight.addEventListener('click', () => {
+    if (currentPage < totalPages - 1) {
+      currentPage++;
+      const card = track.querySelector('.product-card');
+      const cardWidth = card.offsetWidth;
+      const gap = 16;
+
+      // แก้ตรงนี้
+      const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+
+      track.scrollTo({
+        left: currentPage * pageWidth,
+        behavior: "smooth"
+      });
+      updateIndicator(currentPage);
+      updateButtonStates();
+    }
+  });
+
+  // Initial button state
+  updateButtonStates();
+
+  // Update on manual scroll
+  track.addEventListener("scroll", () => {
+    const card = track.querySelector('.product-card');
+    const cardWidth = card.offsetWidth;
+    const gap = 16;
+    const scrollLeft = track.scrollLeft;
+
+    // แก้จาก Math.round(scrollLeft / (CARDS_PER_PAGE * (cardWidth + gap)))
+    const pageWidth = CARDS_PER_PAGE * cardWidth + (CARDS_PER_PAGE - 1) * gap;
+    const pageIndex = Math.round(scrollLeft / pageWidth);
+
+    // if (pageIndex !== currentPage) {
+    //   currentPage = pageIndex;
+    //   updateIndicator(currentPage);
+    //   updateButtonStates();
+    // }
+  });
+}
+
+// =============================================
+// INITIALIZATION
+// =============================================
+function initAllProductSections() {
+  renderProductSections();
+
+  Object.keys(productData).forEach(key => {
+    const type = productData[key].type;
+    initProductScroll(type);
+  });
+}
+
+function watchProductScroll() {
+  if (isProductSystemInitialized) return;
+
+  const container = document.getElementById("productSection");
+
+  if (container) {
+    initAllProductSections();
+    isProductSystemInitialized = true;
+  } else {
+    if (productObserver) productObserver.disconnect();
+
+    productObserver = new MutationObserver(() => {
+      if (document.getElementById("productSection")) {
+        initAllProductSections();
+        isProductSystemInitialized = true;
+        productObserver.disconnect();
+      }
+    });
+
+    productObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+}
+
+// =============================================
+// START
+// =============================================
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', watchProductScroll);
+} else {
+  watchProductScroll();
+}

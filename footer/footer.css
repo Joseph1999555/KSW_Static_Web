@@ -10,6 +10,10 @@
   margin: 0;
 }
 
+.site-footer > p {
+  text-align: center;
+}
+
 .footer-links {
   position: absolute;
   top: 15px;
@@ -34,7 +38,7 @@
   /* three-column layout */
 }
 
-/* Responsive: 2 columns on tablets, 1 column on phones */
+/* Responsive: 2 columns on tablets */
 @media (max-width: 768px) {
   .column {
     width: 50%;
@@ -45,10 +49,11 @@
   }
 }
 
+/* 2 columns on mobile phones */
 @media (max-width: 480px) {
   .column {
-    width: 100%;
-    float: none;
+    width: 50%;
+    float: left;
   }
 
   .footer-links {
@@ -61,6 +66,10 @@
     padding-left: 16px;
     padding-right: 16px;
   }
+  
+  .row {
+    margin-bottom: 20px;
+  }
 }
 
 .row:after {
@@ -71,9 +80,19 @@
 
 .column h2 {
   color: white;
+  
 }
 
 .column h4 {
   color: white;
   margin-bottom: 3px;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
