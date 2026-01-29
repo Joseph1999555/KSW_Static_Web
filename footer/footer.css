@@ -10,30 +10,27 @@
   margin: 0;
 }
 
+.site-footer > p {
+  text-align: center;
+}
+
 .footer-links {
   position: absolute;
   top: 15px;
   right: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
-.footer-links a {
-  width: 40px;
-  height: 40px;
-  background: #3b5998;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-  font-size: 24px;
+.fa {
+  padding: 15px;
+  font-size: 30px;
+  width: 10px;
+  height: 10px;
+  text-align: center;
   text-decoration: none;
+  border-radius: 50%;
+  background: #3B5998;
+  color: white;
 }
-
 
 .column {
   float: left;
@@ -41,36 +38,37 @@
   /* three-column layout */
 }
 
-.working-hours-wrapper {
-  display : grid;
-  grid-template-rows: repeat(2, auto);
-  grid-auto-flow: column;
-}
-
-.phone-content {
-  margin-top: 10px;
-}
-
-@media (max-width: 1000px) {
-  .working-hours-wrapper {
-  grid-template-rows: repeat(1, auto);
-  grid-auto-flow: row;
-}
+/* Responsive: 2 columns on tablets */
+@media (max-width: 768px) {
+  .column {
+    width: 50%;
+  }
 
   .footer-links {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    top: auto;
-    flex-direction: row;
-    gap: 10px;
-    margin-bottom: 0;
+    right: 20px;
+  }
+}
+
+/* 2 columns on mobile phones */
+@media (max-width: 480px) {
+  .column {
+    width: 50%;
+    float: left;
+  }
+
+  .footer-links {
+    position: static;
+    margin-bottom: 12px;
   }
 
   .site-footer {
     text-align: left;
     padding-left: 16px;
     padding-right: 16px;
+  }
+  
+  .row {
+    margin-bottom: 20px;
   }
 }
 
@@ -82,23 +80,19 @@
 
 .column h2 {
   color: white;
-  margin: 0;
+  
 }
 
 .column h4 {
   color: white;
   margin-bottom: 3px;
-  margin-top: 10px;
 }
 
-.phone-link,
-.email-link {
+.link {
   color: #ffffff;
   text-decoration: none;
 }
 
-.phone-link:hover,
-.email-link:hover {
-  color: #00AEEF;
+.link:hover {
   text-decoration: underline;
 }
