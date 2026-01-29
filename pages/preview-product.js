@@ -37,21 +37,21 @@ const productData = {
         id: 5,
         name: "ตาข่ายลวด MT (ชุบกัลวาไนซ์)",
         description: "เป็นการเคลือบสังกะสีแบบจุ่มร้อน ทำให้มีความทนทานต่อการกัดกร่อนจากสภาพอากาศ และแรงกระแทกจากสัตว์หรือสิ่งของได้ดี",
-        image: "./images/pondliner.png",
+        image: "./images/mt.jpg",
         alt: "ตาข่ายลวด MT (ชุบกัลวาไนซ์)"
       },
       {
         id: 6,
         name: "ลวดเชื่อม KOBE-30",
         description: "เป็นลวดเชื่อมไฟฟ้าที่มียอดขายอันดับ 1 ตามมาตรฐาน AWS A5.1 E6013 การอาร์คคงที่ สม่ำเสมอ ไม่มีสะดุด",
-        image: "./images/pondlinerfightingfishwhite.png",
+        image: "./images/kobe-30.jpg",
         alt: "ลวดเชื่อม KOBE-30"
       },
       {
         id: 7,
         name: "ใบตัด SUMO Fast Cut",
         description: "ผลิตจากเม็ดทรายอลูมินั่มออกไซด์เกรดพิเศษ หนาเพียง 1.0 มม. ทำให้รอยตัดเล็ก คมกริบ ออกแบบมาเพื่อตัดสแตนเลส และเหล็กได้ทุกชนิด",
-        image: "./images/pondlinerfightingfishblack.png",
+        image: "./images/sumo-fast-cut.jpg",
         alt: "ใบตัด SUMO Fast Cut"
       }
     ]
