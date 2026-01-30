@@ -1088,13 +1088,13 @@ ul.service-box {
   transform: translateY(-50%) scale(0.95);
 }
 
-.nav-btn-left {
+/* .nav-btn-left {
   left: clamp(8px, 2vw, 16px);
 }
 
 .nav-btn-right {
   right: clamp(8px, 2vw, 16px);
-}
+} */
 
 /* === Card Viewport === */
 .card-viewport {
@@ -1172,10 +1172,6 @@ ul.service-box {
 
 .scroll-indicator .dot.active {
   background: #000;
-}
-
-.clone {
-  pointer-events: none;
 }
 
 /* ========================================
@@ -1364,11 +1360,11 @@ ul.service-box {
   }
   
   .nav-btn-left {
-    left: 500px;
+    left: clamp(150px, 10vw, 300px);
   }
   
   .nav-btn-right {
-    right: 500px;
+    right: clamp(150px, 10vw, 300px);
   }
   
   .card-viewport {
@@ -1378,6 +1374,7 @@ ul.service-box {
   
   .card-track {
     overflow-x: hidden;
+    justify-content: center;
   }
   
   .section-wrapper {
@@ -1398,12 +1395,7 @@ ul.service-box {
   }
 }
 
-/* ถ้าจอขนาดตั้งแต่ 769px ขึ้นไป card จะอยู่กลาง */
-@media (min-width: 1600px) {
-  .card-track {
-    justify-content: center; /* desktop อยู่กลาง */
-  }
-}
+
 
 /* Brands Section */
 .brands {
